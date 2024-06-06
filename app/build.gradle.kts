@@ -48,7 +48,6 @@ dependencies {
 	implementation(libs.androidx.appcompat)
 	implementation(libs.androidx.activity)
 	implementation(libs.androidx.fragment)
-	implementation(libs.androidx.navigation)
 	implementation(libs.androidx.constraintlayout)
 
 	// Camera
@@ -89,6 +88,10 @@ dependencies {
 
 	// Room
 	implementation(libs.androidx.room.runtime)
+	implementation(libs.androidx.navigation.fragment.ktx)
+	implementation(libs.androidx.navigation.ui.ktx)
+	implementation(libs.androidx.legacy.support.v4)
+	implementation(libs.androidx.fragment.ktx)
 	ksp(libs.room.compiler)
 
 	// Tensorflow

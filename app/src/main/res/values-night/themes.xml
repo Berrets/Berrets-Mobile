@@ -2,6 +2,11 @@
 	<!-- Base application theme. -->
 	<style name="Base.Theme.Berrets" parent="Theme.Material3.DayNight.NoActionBar">
 		<!-- Customize your dark theme here. -->
-		<!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+		<item name="colorPrimary">@color/primary60</item>
+		<item name="colorAccent">@color/primary60</item>
+		<item name="colorOnPrimary">@color/white</item>
+		<item name="colorPrimaryVariant">@color/primary60</item>
+		<item name="android:statusBarColor" >?attr/colorPrimary</item>
+		<item name="android:fontFamily">@font/font_family</item>
 	</style>
 </resources>

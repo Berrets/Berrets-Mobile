@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<!-- Bottom Navbar text selected -->
+	<style name="BottomNavigationView.SelectedText" parent="TextAppearance.AppCompat.Caption">
+		<item name="android:textSize">14sp</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+
+	<!-- Bottom Navbar text unselected -->
+	<style name="BottomNavigationView.UnselectedText" parent="TextAppearance.AppCompat.Caption">
+		<item name="android:textSize">14sp</item>
+		<item name="android:textStyle">normal</item>
+	</style>
+
+</resources>
