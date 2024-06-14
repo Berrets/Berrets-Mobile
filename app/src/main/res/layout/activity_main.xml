@@ -21,6 +21,7 @@
 		app:itemTextAppearanceActive="@style/BottomNavigationView.SelectedText"
 		app:itemTextAppearanceInactive="@style/BottomNavigationView.UnselectedText"
 		app:itemActiveIndicatorStyle="@null"
+		app:itemIconSize="24dp"
 		app:menu="@menu/bottom_nav_menu" />
 
 	<fragment

@@ -5,6 +5,34 @@
 	<string name="title_community">Komunitas</string>
 	<string name="username">username</string>
 	<string name="alt_hero_scenery">Scenery Image reflected based on the time</string>
-
-	<string name="user_greeting">Selamat %1$s $2$s</string>
+	<string name="user_greeting">Selamat %1$s %2$s</string>
+	<string name="user_greeting_under">Yuk majukan pertanian bersama kami!</string>
+	<string name="hint_search">Telusuri Berrets disini…</string>
+	<string name="label_recommendation">Teknik\nPertanian</string>
+	<string name="label_detection">Deteksi\nKualitas</string>
+	<string name="label_pricing">Harga\nPasar</string>
+	<string name="label_others">Lainnya</string>
+	<string name="notification">Notifikasi</string>
+	<string name="search">Pencarian</string>
+	<string name="user_personal_profile_image">foto profil anda</string>
+	<string name="hint_comment">Yuk bagikan aktivitas Anda…</string>
+	<string name="desc_button_add_image">menambahkan gambar pada komentar</string>
+	<string name="desc_button_add_emotion">menambahkan emosi pada komentar</string>
+	<string name="desc_button_add_location">menambahkan lokasi pada komentar</string>
+	<string name="label_share">Bagikan</string>
+	<string name="label_all">Semua</string>
+	<string name="label_general">Umum</string>
+	<string name="label_activity">Kegiatan</string>
+	<string name="label_tips_and_tricks">Tips &amp; Trik</string>
+	<string name="label_information">Informasi</string>
+	<string name="dot">•</string>
+	<string name="post_time">40m</string>
+	<string name="placeholder_lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</string>
+	<string name="hint_like_post">Tombol untuk like postingan</string>
+	<string name="count_like">12</string>
+	<string name="hint_reply_post">Tombol untuk membalas postingan</string>
+	<string name="count_reply">0</string>
+	<string name="count_bookmark">0</string>
+	<string name="hint_bookmark_post">Tombol untuk bookmark postingan</string>
+	<string name="hint_share_post">Tombol untuk share postingan</string>
 </resources>

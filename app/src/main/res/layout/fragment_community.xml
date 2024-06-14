@@ -4,19 +4,255 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:background="@color/backgroundPrimary"
 	tools:context=".view.main.community.CommunityFragment">
 
-	<TextView
-		android:id="@+id/text_notifications"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="8dp"
-		android:layout_marginTop="8dp"
-		android:layout_marginEnd="8dp"
-		android:textAlignment="center"
-		android:textSize="20sp"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
+	<View
+		android:id="@+id/status_bar_height"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintTop_toTopOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		app:layout_constraintEnd_toEndOf="parent" />
+
+	<com.google.android.material.appbar.MaterialToolbar
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="?attr/actionBarSize"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/status_bar_height"
+		app:title="@string/title_community" />
+
+	<View
+		android:id="@+id/toolbar_divider"
+		android:layout_width="0dp"
+		android:layout_height="1dp"
+		android:background="?attr/colorControlHighlight"
+		app:layout_constraintTop_toBottomOf="@id/toolbar"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent" />
+
+	<de.hdodenhof.circleimageview.CircleImageView
+		android:id="@+id/user_profile_image"
+		android:layout_width="48dp"
+		android:layout_height="48dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="16dp"
+		android:contentDescription="@string/user_personal_profile_image"
+		android:src="@drawable/sample_avatar"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+	<com.google.android.material.textfield.TextInputLayout
+		style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+		android:id="@+id/comment_layout"
+		android:layout_width="0dp"
+		android:layout_height="100dp"
+		android:layout_marginHorizontal="16dp"
+		android:layout_marginTop="16dp"
+		app:boxBackgroundColor="@color/fillPrimary"
+		app:boxCornerRadiusBottomEnd="12dp"
+		app:boxCornerRadiusBottomStart="12dp"
+		app:boxCornerRadiusTopEnd="12dp"
+		app:boxCornerRadiusTopStart="12dp"
+		app:boxStrokeWidth="0dp"
+		app:hintEnabled="false"
+		app:layout_constraintTop_toBottomOf="@id/toolbar"
+		app:layout_constraintStart_toEndOf="@id/user_profile_image"
+		app:layout_constraintEnd_toEndOf="parent">
+
+		<com.google.android.material.textfield.TextInputEditText
+			style="@style/TextBase_Regular"
+			android:id="@+id/comment_input"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:hint="@string/hint_comment"
+			android:inputType="textMultiLine"
+			android:maxLines="5"
+			android:gravity="top|start"
+			android:textColor="@color/textPrimary" />
+
+	</com.google.android.material.textfield.TextInputLayout>
+
+	<LinearLayout
+		android:id="@+id/comment_button_layout"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="16dp"
+		android:layout_marginTop="8dp"
+		android:paddingBottom="8dp"
+		android:orientation="horizontal"
+		app:layout_constraintTop_toBottomOf="@id/comment_layout"
+		app:layout_constraintStart_toEndOf="@id/user_profile_image"
+		app:layout_constraintEnd_toEndOf="parent">
+
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:gravity="center|start"
+			android:layout_weight="1">
+
+			<ImageButton
+				android:id="@+id/button_add_image"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:contentDescription="@string/desc_button_add_image"
+				android:src="@drawable/ic_image"
+				android:background="@drawable/corner_rounded"
+				android:backgroundTint="@color/fillPrimary"
+				android:padding="8dp"
+				app:tint="@color/textSecondary" />
+
+			<ImageButton
+				android:id="@+id/button_add_emotion"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:contentDescription="@string/desc_button_add_emotion"
+				android:src="@drawable/ic_mask_happy"
+				android:background="@drawable/corner_rounded"
+				android:backgroundTint="@color/fillPrimary"
+				android:layout_marginHorizontal="6dp"
+				android:padding="8dp"
+				app:tint="@color/textSecondary" />
+
+			<ImageButton
+				android:id="@+id/button_add_location"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:contentDescription="@string/desc_button_add_location"
+				android:src="@drawable/ic_map"
+				android:background="@drawable/corner_rounded"
+				android:backgroundTint="@color/fillPrimary"
+				android:padding="8dp"
+				app:tint="@color/textSecondary" />
+
+		</LinearLayout>
+
+		<com.google.android.material.button.MaterialButton
+			style="@style/TextSmall_Regular"
+			android:id="@+id/button_submit_comment"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/label_share"
+			android:textColor="@color/backgroundPrimary"
+			android:paddingHorizontal="0dp"
+			app:cornerRadius="12dp" />
+
+	</LinearLayout>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/post_layout"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:background="@color/backgroundSecondary"
+		android:paddingTop="8dp"
+		app:layout_constraintTop_toBottomOf="@id/comment_button_layout"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent">
+
+		<HorizontalScrollView
+			android:id="@+id/categories_container"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:scrollbarSize="0dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:orientation="horizontal"
+				android:paddingHorizontal="16dp">
+
+				<com.google.android.material.button.MaterialButton
+					style="@style/TextSmall_Regular"
+					android:id="@+id/button_category_all"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:minWidth="0dp"
+					android:paddingHorizontal="10dp"
+					android:text="@string/label_all"
+					android:textColor="@color/textSecondary"
+					android:backgroundTint="@color/fillPrimary"
+					app:cornerRadius="15dp" />
+
+				<com.google.android.material.button.MaterialButton
+					android:id="@+id/button_category_general"
+					style="@style/TextSmall_Regular"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="8dp"
+					android:backgroundTint="@color/fillPrimary"
+					android:minWidth="0dp"
+					android:paddingHorizontal="10dp"
+					android:text="@string/label_general"
+					android:textColor="@color/textSecondary"
+					app:cornerRadius="15dp" />
+
+				<com.google.android.material.button.MaterialButton
+					style="@style/TextSmall_Regular"
+					android:id="@+id/button_category_activity"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:minWidth="0dp"
+					android:paddingHorizontal="8dp"
+					android:text="@string/label_activity"
+					android:textColor="@color/textSecondary"
+					android:backgroundTint="@color/fillPrimary"
+					app:cornerRadius="15dp" />
+
+				<com.google.android.material.button.MaterialButton
+					style="@style/TextSmall_Regular"
+					android:id="@+id/button_category_tips_and_tricks"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingHorizontal="8dp"
+					android:text="@string/label_tips_and_tricks"
+					android:textColor="@color/textSecondary"
+					android:backgroundTint="@color/fillPrimary"
+					android:layout_marginHorizontal="8dp"
+					app:cornerRadius="15dp" />
+
+				<com.google.android.material.button.MaterialButton
+					style="@style/TextSmall_Regular"
+					android:id="@+id/button_category_information"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingHorizontal="8dp"
+					android:text="@string/label_information"
+					android:textColor="@color/textSecondary"
+					android:backgroundTint="@color/fillPrimary"
+					app:cornerRadius="15dp" />
+
+			</LinearLayout>
+
+		</HorizontalScrollView>
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/rv_post"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_marginHorizontal="16dp"
+			android:layout_marginTop="8dp"
+			android:overScrollMode="never"
+			app:layout_constraintTop_toBottomOf="@+id/categories_container" />
+
+		<ProgressBar
+			android:id="@+id/progressBar"
+			style="?android:attr/progressBarStyle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:visibility="gone"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:visibility="visible" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
