@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingVertical="32dp"
+    android:paddingHorizontal="16dp">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/img_empty_history" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        style="@style/TextExtraLarge_SemiBold"
+        android:text="Belum Ada Hasil Deteksi"
+        android:textColor="@color/textPrimary"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingHorizontal="32dp"
+        android:gravity="center"
+        style="@style/TextBase_Regular"
+        android:text="Kami akan menampilkan riwayat hasil deteksi disini begitu ada"
+        android:textColor="@color/textSecondary" />
+
+</LinearLayout>

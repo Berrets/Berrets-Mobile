@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundSecondary"
+    tools:context=".view.qualityDetection.QualityDetectionActivity">
+
+    <ImageView
+        android:id="@+id/hero_quality_detection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hero_quality_detection" />
+
+    <LinearLayout
+        android:id="@+id/text_greeting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/hero_quality_detection">
+
+        <TextView
+            style="@style/Heading5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mari Kita Mulai"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            style="@style/TextBase_Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yuk deteksi beras putih Anda"
+            android:textColor="@color/primary200" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rice_quality_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/hero_quality_detection">
+
+        <TextView
+            style="@style/TextExtraLarge_SemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kualitas Beras"
+            android:layout_marginBottom="2dp"
+            android:textColor="@color/textPrimary" />
+
+        <TextView
+            style="@style/TextExtraSmall_Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Berdasarkan syarat khusus beras"
+            android:textColor="@color/textSecondary" />
+
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/rice_quality_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@+id/rice_quality_heading">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp">
+
+            <!-- Pakaikan RecyclerView -->
+
+            <!-- Kualitas Premium -->
+            <LinearLayout
+                android:layout_width="126dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/shape_rounded"
+                android:backgroundTint="@color/backgroundPrimary"
+                android:layout_marginEnd="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_grain"
+                    android:padding="6dp"
+                    android:background="@drawable/shape_circle"
+                    android:backgroundTint="@color/premium_bg"
+                    app:tint="@color/premium_text"/>
+                <TextView
+                    style="@style/TextExtraSmall_Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="KUALITAS"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/textSecondary" />
+                <TextView
+                    style="@style/Heading6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PREMIUM"
+                    android:textColor="@color/textPrimary" />
+
+            </LinearLayout>
+
+            <!-- Kualitas Medium I -->
+            <LinearLayout
+                android:layout_width="126dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/shape_rounded"
+                android:backgroundTint="@color/backgroundPrimary"
+                android:layout_marginEnd="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_grain"
+                    android:padding="6dp"
+                    android:background="@drawable/shape_circle"
+                    android:backgroundTint="@color/medium_i_bg"
+                    app:tint="@color/medium_i_text"/>
+                <TextView
+                    style="@style/TextExtraSmall_Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="KUALITAS"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/textSecondary" />
+                <TextView
+                    style="@style/Heading6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MEDIUM I"
+                    android:textColor="@color/textPrimary" />
+
+            </LinearLayout>
+
+            <!-- Kualitas Medium II -->
+            <LinearLayout
+                android:layout_width="126dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/shape_rounded"
+                android:backgroundTint="@color/backgroundPrimary"
+                android:layout_marginEnd="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_grain"
+                    android:padding="6dp"
+                    android:background="@drawable/shape_circle"
+                    android:backgroundTint="@color/medium_ii_bg"
+                    app:tint="@color/medium_ii_text"/>
+                <TextView
+                    style="@style/TextExtraSmall_Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="KUALITAS"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/textSecondary" />
+                <TextView
+                    style="@style/Heading6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MEDIUM II"
+                    android:textColor="@color/textPrimary" />
+
+            </LinearLayout>
+
+            <!-- Kualitas Bawah -->
+            <LinearLayout
+                android:layout_width="126dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/shape_rounded"
+                android:backgroundTint="@color/backgroundPrimary">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_grain"
+                    android:padding="6dp"
+                    android:background="@drawable/shape_circle"
+                    android:backgroundTint="@color/bottom_bg"
+                    app:tint="@color/bottom_text"/>
+                <TextView
+                    style="@style/TextExtraSmall_Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="KUALITAS"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/textSecondary" />
+                <TextView
+                    style="@style/Heading6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BAWAH"
+                    android:textColor="@color/textPrimary" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/rice_parameter_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/rice_quality_type">
+
+        <TextView
+            style="@style/TextExtraLarge_SemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parameter Beras"
+            android:layout_marginBottom="2dp"
+            android:textColor="@color/textPrimary" />
+
+        <TextView
+            style="@style/TextExtraSmall_Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Standar untuk menetapkan mutu beras"
+            android:textColor="@color/textSecondary" />
+
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/rice_parameter_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@+id/rice_parameter_heading">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:layout_marginBottom="16dp">
+
+            <!-- Pakaikan RecyclerView -->
+
+            <!-- Butir Kepala (Belum ada outlinenya) -->
+            <LinearLayout
+                android:layout_width="234dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/shape_rounded"
+                android:backgroundTint="@color/butir_kepala_bg">
+
+                <TextView
+                    style="@style/TextBase_SemiBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Butir Kepala"
+                    android:textColor="@color/textPrimary" />
+                <TextView
+                    style="@style/TextExtraSmall_Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore"
+                    android:textColor="@color/textSecondary"
+                    android:maxLines="2"
+                    android:ellipsize="end" />
+
+            </LinearLayout>
+
+            <!-- dan Parameter Lainnya... -->
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary400"
+        android:src="@drawable/ic_camera"
+        app:borderWidth="0dp"
+        app:elevation="0dp"
+        app:fabCustomSize="56dp"
+        app:maxImageSize="24dp"
+        app:rippleColor="@color/primary600"
+        app:tint="@color/white"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

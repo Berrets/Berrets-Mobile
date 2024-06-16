@@ -1,10 +1,10 @@
 <resources>
-	<string name="app_name">Berrets</string>
-	<string name="title_home">Beranda</string>
-	<string name="title_store">Pasar</string>
-	<string name="title_community">Komunitas</string>
-	<string name="username">username</string>
-	<string name="alt_hero_scenery">Scenery Image reflected based on the time</string>
+    <string name="app_name">Berrets</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_store">Pasar</string>
+    <string name="title_community">Komunitas</string>
+    <string name="username">username</string>
+    <string name="alt_hero_scenery">Scenery Image reflected based on the time</string>
 
-	<string name="user_greeting">Selamat %1$s $2$s</string>
+    <string name="user_greeting">Selamat %1$s $2$s</string>
 </resources>

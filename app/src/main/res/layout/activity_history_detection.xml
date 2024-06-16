@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundSecondary"
+    tools:context=".view.qualityDetection.DetailDetectionActivity">
+
+    <!-- Navbar -->
+    <LinearLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingVertical="14dp"
+        android:paddingHorizontal="9dp"
+        android:background="@color/backgroundPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:padding="7dp"
+            android:src="@drawable/ic_arrow_left"
+            android:background="@drawable/btn_ripple_icon"
+            app:tint="@color/textSecondary"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            style="@style/TextExtraLarge_SemiBold"
+            android:id="@+id/title_navbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/textPrimary"
+            android:layout_marginEnd="16dp"
+            android:text="Riwayat Deteksi"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <ImageButton
+                android:id="@+id/btn_notification"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:padding="7dp"
+                android:src="@drawable/ic_notification"
+                android:background="@drawable/btn_ripple_icon"
+                app:tint="@color/textSecondary"
+                android:layout_marginEnd="6dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_more"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:padding="7dp"
+                android:src="@drawable/ic_more"
+                android:background="@drawable/btn_ripple_icon"
+                app:tint="@color/textSecondary"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        app:tabMode="scrollable"
+        app:tabGravity="fill"
+        app:tabTextAppearance="@style/CustomTabTextAppearance"
+        app:tabIndicatorColor="@color/primary400"
+        app:tabIndicatorHeight="4dp"
+        app:tabTextColor="@color/textSecondary"
+        app:tabSelectedTextColor="@color/textPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navbar">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semua Data"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Premium"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium I"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium II"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bawah"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/historyRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/adapter_history_detection" />
+
+            <include
+                android:id="@+id/emptyHistory"
+                layout="@layout/empty_history_detection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary400"
+        android:src="@drawable/ic_camera"
+        app:borderWidth="0dp"
+        app:elevation="0dp"
+        app:fabCustomSize="56dp"
+        app:maxImageSize="24dp"
+        app:rippleColor="@color/primary600"
+        app:tint="@color/white"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
