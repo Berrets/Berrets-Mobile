@@ -35,4 +35,5 @@
 	<string name="count_bookmark">0</string>
 	<string name="hint_bookmark_post">Tombol untuk bookmark postingan</string>
 	<string name="hint_share_post">Tombol untuk share postingan</string>
+	<string name="hint_create_post">tombol untuk membuat postingan</string>
 </resources>
