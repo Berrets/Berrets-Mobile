@@ -1,5 +1,6 @@
 package com.capstone.berrets.view.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -10,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.capstone.berrets.R
 import com.capstone.berrets.databinding.ActivityMainBinding
+import com.capstone.berrets.view.qualityDetection.DetailDetectionActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,14 +24,14 @@ class MainActivity : AppCompatActivity() {
 		setContentView(binding.root)
 		ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
 			val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-			v.setPadding(systemBars.left,
+			v.setPadding(
+				systemBars.left,
 				0,
 				systemBars.right,
 				0
 			)
 			insets
 		}
-
 		setupBottomNavbar()
 	}
 

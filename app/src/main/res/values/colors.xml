@@ -20,51 +20,87 @@
 	<color name="fillQuaternary">#FFF4F4F5</color>
 
 	<!-- Primary Colors -->
-	<color name="primary10">#FFE3F0E0</color>
-	<color name="primary20">#FFC6E1C1</color>
-	<color name="primary30">#FFAAD2A3</color>
-	<color name="primary40">#FF8DC384</color>
-	<color name="primary50">#FF7FBC74</color>
-	<color name="primary60">#FF71B465</color>
-	<color name="primary70">#FF5A9051</color>
-	<color name="primary80">#FF446C3D</color>
-	<color name="primary90">#FF2D4828</color>
-	<color name="primary100">#FF172414</color>
+	<color name="primary50">#FFF5FAF3</color>
+	<color name="primary100">#FFE6F4E4</color>
+	<color name="primary200">#FFCFE8CA</color>
+	<color name="primary300">#FFA8D5A0</color>
+	<color name="primary400">#FF71B465</color>
+	<color name="primary500">#FF579C4B</color>
+	<color name="primary600">#FF448039</color>
+	<color name="primary700">#FF376530</color>
+	<color name="primary800">#FF2F512A</color>
+	<color name="primary900">#FF284324</color>
+	<color name="primary950">#FF11240F</color>
+
+	<!-- Secondary Colors -->
+	<color name="secondary50">#FFFFF8EB</color>
+	<color name="secondary100">#FFFEEAC7</color>
+	<color name="secondary200">#FFFDD28A</color>
+	<color name="secondary300">#FFFCBB4D</color>
+	<color name="secondary400">#FFFBAB24</color>
+	<color name="secondary500">#FFF59E0B</color>
+	<color name="secondary600">#FFD98B06</color>
+	<color name="secondary700">#FFB47409</color>
+	<color name="secondary800">#FF92610E</color>
+	<color name="secondary900">#FF78510F</color>
+	<color name="secondary950">#FF452C03</color>
 
 	<!-- State Colors -->
-	<color name="warningLighter">#FFFEF5E7</color>
 	<color name="warningLight">#FFFCE2B6</color>
 	<color name="warningBase">#FFF59E0B</color>
 	<color name="warningDark">#FF7B4F06</color>
 
-	<color name="negativeLighter">#FFFDE6E6</color>
 	<color name="negativeLight">#FFFAB3B3</color>
 	<color name="negativeBase">#FFEE0303</color>
 	<color name="negativeDark">#FF770202</color>
 
-	<color name="positiveLighter">#FFE3F0E0</color>
-	<color name="positiveLight">#FFAAD2A3</color>
-	<color name="positiveBase">#FF71B465</color>
-	<color name="positiveDark">#FF446C3D</color>
+	<color name="positiveLight">@color/primary200</color>
+	<color name="positiveBase">@color/primary400</color>
+	<color name="positiveDark">@color/primary800</color>
 
-	<color name="infoLighter">#FFE6F5FF</color>
 	<color name="infoLight">#FFB3E1FE</color>
 	<color name="infoBase">#FF009CFC</color>
 	<color name="infoDark">#FF004E7E</color>
 
-	<color name="neutralLighter">#FFF2F2F7</color>
 	<color name="neutralLight">#FFE5E5EA</color>
 	<color name="neutralBase">#FFA7A7AA</color>
 	<color name="neutralDark">#FF464649</color>
 
-	<color name="premium_bg">#FFD9E7D9</color>
-	<color name="premium_text">#FF56A348</color>
+	<!-- Quality Colors -->
+	<color name="premium_bg">@color/primary200</color>
+	<color name="premium_text">@color/primary500</color>
 	<color name="medium_i_bg">#FFE2FAB5</color>
 	<color name="medium_i_text">#FF65A30D</color>
 	<color name="medium_ii_bg">#FFFEF4A7</color>
 	<color name="medium_ii_text">#FFCA8A04</color>
-	<color name="bottom_bg">#FFFBD5D5</color>
+	<color name="bottom_bg">#FFFBD4D5</color>
 	<color name="bottom_text">#FFDC2626</color>
 	<color name="default_bg">@color/textQuaternary</color>
 	<color name="default_text">@color/textSecondary</color>
+
+	<!-- Parameter Colors -->
+	<color name="batu_bg">#FFEBEBF0</color>
+	<color name="batu_outline">#FFB7B7BC</color>
+	<color name="butir_gabah_bg">#FFFBFFE4</color>
+	<color name="butir_gabah_outline">#FFBFFF00</color>
+	<color name="butir_kapur_bg">#FFEDFFFE</color>
+	<color name="butir_kapur_outline">#FF00FFFF</color>
+	<color name="butir_kepala_bg">#FFF1FCF1</color>
+	<color name="butir_kepala_outline">#FF2CB33E</color>
+	<color name="butir_menir_bg">#FFFEF1F8</color>
+	<color name="butir_menir_outline">#FFFF69B4</color>
+	<color name="butir_merah_bg">#FFFFF0F1</color>
+	<color name="butir_merah_outline">#FFF81F2E</color>
+	<color name="butir_patah_bg">#FFF6F4FE</color>
+	<color name="butir_patah_outline">#FF7442CB</color>
+	<color name="butir_rusak_bg">#FFFFFCEA</color>
+	<color name="butir_rusak_outline">#FFFFA500</color>
+	<color name="kutu_bg">#FFEFFEFA</color>
+	<color name="kutu_outline">#FF40E0D0</color>
+	<color name="sekam_bg">#FFFBFFE7</color>
+	<color name="sekam_outline">#FFFFFF00</color>
+
+	<!-- Other -->
+	<color name="bg_button_opacity">#33000000</color>
+
 </resources>

@@ -10,37 +10,59 @@
 
 	<!--  HEADING  -->
 	<style name="Heading1">
-		<item name="android:fontFamily">@font/manrope_bold</item>
+		<item name="android:fontFamily">@font/migae_semibold</item>
 		<item name="android:textSize">40sp</item>
 		<item name="android:lineHeight">44sp</item>
 	</style>
 	<style name="Heading2">
-		<item name="android:fontFamily">@font/manrope_bold</item>
+		<item name="android:fontFamily">@font/migae_semibold</item>
 		<item name="android:textSize">36sp</item>
 		<item name="android:lineHeight">40sp</item>
 	</style>
 	<style name="Heading3">
-		<item name="android:fontFamily">@font/manrope_bold</item>
+		<item name="android:fontFamily">@font/migae_semibold</item>
 		<item name="android:textSize">32sp</item>
 		<item name="android:lineHeight">38sp</item>
 	</style>
 	<style name="Heading4">
-		<item name="android:fontFamily">@font/manrope_bold</item>
+		<item name="android:fontFamily">@font/migae_semibold</item>
 		<item name="android:textSize">28sp</item>
 		<item name="android:lineHeight">34sp</item>
 	</style>
 	<style name="Heading5">
-		<item name="android:fontFamily">@font/manrope_bold</item>
+		<item name="android:fontFamily">@font/migae_semibold</item>
 		<item name="android:textSize">24sp</item>
 		<item name="android:lineHeight">32sp</item>
 	</style>
 	<style name="Heading6">
-		<item name="android:fontFamily">@font/manrope_bold</item>
+		<item name="android:fontFamily">@font/migae_semibold</item>
 		<item name="android:textSize">20sp</item>
 		<item name="android:lineHeight">28sp</item>
 	</style>
 
+
 	<!--  BODY TEXT  -->
+	<!--  Text Extra Large  -->
+	<style name="TextExtraLarge_Regular">
+		<item name="android:fontFamily">@font/manrope_regular</item>
+		<item name="android:textSize">20sp</item>
+		<item name="android:lineHeight">28sp</item>
+	</style>
+	<style name="TextExtraLarge_Medium">
+		<item name="android:fontFamily">@font/manrope_medium</item>
+		<item name="android:textSize">20sp</item>
+		<item name="android:lineHeight">28sp</item>
+	</style>
+	<style name="TextExtraLarge_SemiBold">
+		<item name="android:fontFamily">@font/manrope_semibold</item>
+		<item name="android:textSize">20sp</item>
+		<item name="android:lineHeight">28sp</item>
+	</style>
+	<style name="TextExtraLarge_Bold">
+		<item name="android:fontFamily">@font/manrope_bold</item>
+		<item name="android:textSize">20sp</item>
+		<item name="android:lineHeight">28sp</item>
+	</style>
 
 	<!--  Text Large  -->
 	<style name="TextLarge_Regular">
@@ -158,7 +180,7 @@
 		<item name="android:paddingVertical">10dp</item>
 		<item name="android:textColorHint">@color/textTertiary</item>
 		<item name="android:textColor">@color/textPrimary</item>
-		<item name="android:textColorHighlight">@color/primary20</item>
+		<item name="android:textColorHighlight">@color/primary200</item>
 		<item name="android:textCursorDrawable">@drawable/caret_color</item>
 	</style>
 

@@ -1,9 +1,11 @@
 package com.capstone.berrets.view.main.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
@@ -12,6 +14,7 @@ import com.capstone.berrets.R
 import com.capstone.berrets.databinding.FragmentHomeBinding
 import com.capstone.berrets.helper.TimeOfDay
 import com.capstone.berrets.helper.timeOfDay
+import com.capstone.berrets.view.qualityDetection.QualityDetectionActivity
 import java.util.Date
 
 class HomeFragment : Fragment() {
@@ -25,15 +28,13 @@ class HomeFragment : Fragment() {
 		savedInstanceState: Bundle?
 	): View {
 		binding = FragmentHomeBinding.inflate(inflater, container, false)
-		/*
-		 * TODO: Get user Session from viewModel
-		 */
-		setupFragmentView()
-
 		return binding.root
 	}
 
-	private fun setupFragmentView() {
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		/*
+		 * TODO: Get user Session from viewModel
+		 */
 		setupTimeOfDay()
 		setupClickableView()
 	}
@@ -64,21 +65,33 @@ class HomeFragment : Fragment() {
 		binding.clickableRecommendation.apply {
 			itemImage.setImageResource(R.drawable.hero_recommendation)
 			itemLabel.text = getString(R.string.label_recommendation)
+			item.setOnClickListener {
+				Toast.makeText(requireContext(), "Coming Soon", Toast.LENGTH_SHORT).show()
+			}
 		}
 
 		binding.clickableDetection.apply {
 			itemImage.setImageResource(R.drawable.hero_detection)
 			itemLabel.text = getString(R.string.label_detection)
+			item.setOnClickListener {
+				startActivity(Intent(requireContext(), QualityDetectionActivity::class.java))
+			}
 		}
 
 		binding.clickablePricing.apply {
 			itemImage.setImageResource(R.drawable.hero_pricing)
 			itemLabel.text = getString(R.string.label_pricing)
+			item.setOnClickListener {
+				Toast.makeText(requireContext(), "Coming Soon", Toast.LENGTH_SHORT).show()
+			}
 		}
 
 		binding.clickableOthers.apply {
 			itemImage.setImageResource(R.drawable.hero_others)
 			itemLabel.text = getString(R.string.label_others)
+			item.setOnClickListener {
+				Toast.makeText(requireContext(), "Coming Soon", Toast.LENGTH_SHORT).show()
+			}
 		}
 	}
 }

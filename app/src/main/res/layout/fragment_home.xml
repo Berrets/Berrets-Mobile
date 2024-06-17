@@ -58,7 +58,7 @@
 		app:startIconDrawable="@drawable/ic_search"
 		app:boxStrokeWidth="0dp"
 		app:hintEnabled="false"
-		app:startIconTint="@color/primary60"
+		app:startIconTint="@color/primary600"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/text_greeting_under">
