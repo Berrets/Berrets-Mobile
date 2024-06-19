@@ -5,120 +5,177 @@
 	android:id="@+id/home_fragment"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:background="@color/backgroundSecondary"
 	tools:context=".view.main.home.HomeFragment">
 
 	<ImageView
 		android:id="@+id/hero_scenery_time"
-		android:layout_width="0dp"
-		android:layout_height="300dp"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:adjustViewBounds="true"
 		android:contentDescription="@string/alt_hero_scenery"
-		android:scaleType="centerCrop"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
 		app:srcCompat="@drawable/hero_scenery_morning" />
 
-	<com.google.android.material.textview.MaterialTextView
-		style="@style/HeadingGreeting"
-		android:id="@+id/text_greeting"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:background="@android:color/transparent"
-		android:text="@string/user_greeting"
-		android:textColor="@android:color/white"
-		app:layout_constraintBottom_toTopOf="@id/text_greeting_under"
-		app:layout_constraintEnd_toEndOf="@id/hero_scenery_time"
-		app:layout_constraintStart_toStartOf="@id/hero_scenery_time" />
-
-	<com.google.android.material.textview.MaterialTextView
-		android:id="@+id/text_greeting_under"
-		style="@style/TextBase_Regular"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginBottom="28dp"
-		android:padding="8dp"
-		android:background="@android:color/transparent"
-		android:text="@string/user_greeting_under"
-		android:textColor="@android:color/white"
-		app:layout_constraintBottom_toBottomOf="@id/hero_scenery_time"
-		app:layout_constraintEnd_toEndOf="@id/hero_scenery_time"
-		app:layout_constraintStart_toStartOf="@id/hero_scenery_time" />
-
-	<com.google.android.material.textfield.TextInputLayout
-		style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-		android:id="@+id/input_layout"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_marginHorizontal="32dp"
-		app:boxBackgroundColor="@color/white"
-		app:boxCornerRadiusBottomEnd="24dp"
-		app:boxCornerRadiusBottomStart="24dp"
-		app:boxCornerRadiusTopEnd="24dp"
-		app:boxCornerRadiusTopStart="24dp"
-		app:startIconDrawable="@drawable/ic_search"
-		app:boxStrokeWidth="0dp"
-		app:hintEnabled="false"
-		app:startIconTint="@color/primary600"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/text_greeting_under">
-
-		<com.google.android.material.textfield.TextInputEditText
-			android:id="@+id/input_search"
-			android:hint="@string/hint_search"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:inputType="text"
-			android:textColor="@color/textPrimary" />
-
-	</com.google.android.material.textfield.TextInputLayout>
-
-	<RelativeLayout
-		android:id="@+id/functions_layout"
+	<EditText
+		android:id="@+id/et_search"
+		style="@style/EditTextStyle"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="20dp"
-		android:gravity="center"
+		android:layout_marginTop="-22dp"
+		android:inputType="text"
+		android:hint="Telusuri Berrets disini..."
+		android:drawableStart="@drawable/ic_search"
+		android:drawableTint="@color/primary400"
+		android:backgroundTint="@color/backgroundPrimary"
+		android:layout_marginHorizontal="16dp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/input_layout">
+		app:layout_constraintTop_toBottomOf="@id/hero_scenery_time" />
 
-		<include
-			android:id="@+id/clickable_recommendation"
-			layout="@layout/clickable_hero_with_label"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_alignParentStart="true"
-			android:layout_centerVertical="true" />
+	<TextView
+		android:id="@+id/text_subgreeting"
+		style="@style/TextBase_Regular"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="16dp"
+		android:text="Yuk majukan pertanian bersama kami!"
+		android:textColor="@color/primary200"
+		android:textAlignment="center"
+		android:layout_marginBottom="16dp"
+		app:layout_constraintBottom_toTopOf="@+id/et_search" />
 
-		<include
-			android:id="@+id/clickable_detection"
-			layout="@layout/clickable_hero_with_label"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toEndOf="@id/clickable_recommendation"
-			android:layout_marginStart="16dp"
-			android:layout_centerVertical="true" />
+	<TextView
+		android:id="@+id/text_greeting"
+		style="@style/Heading5"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="16dp"
+		android:text="@string/user_greeting"
+		android:textColor="@color/white"
+		android:textAlignment="center"
+		app:layout_constraintBottom_toTopOf="@+id/text_subgreeting" />
 
-		<include
-			android:id="@+id/clickable_pricing"
-			layout="@layout/clickable_hero_with_label"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toEndOf="@id/clickable_detection"
-			android:layout_marginStart="16dp"
-			android:layout_centerVertical="true" />
+	<LinearLayout
+		android:id="@+id/linearLayout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:gravity="center"
+		android:orientation="horizontal"
+		app:layout_constraintTop_toBottomOf="@+id/et_search">
 
-		<include
-			android:id="@+id/clickable_others"
-			layout="@layout/clickable_hero_with_label"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toEndOf="@id/clickable_pricing"
-			android:layout_marginStart="16dp"
-			android:layout_centerVertical="true" />
+		<LinearLayout
+			android:id="@+id/recommendation"
+			android:layout_width="80dp"
+			android:layout_height="120dp"
+			android:layout_marginHorizontal="6dp"
+			android:gravity="center|bottom"
+			android:orientation="vertical">
 
-	</RelativeLayout>
+			<ImageView
+				android:layout_width="60dp"
+				android:layout_height="wrap_content"
+				android:adjustViewBounds="true"
+				android:contentDescription="@null"
+				android:src="@drawable/hero_recommendation" />
 
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:fontFamily="@font/manrope_medium"
+				android:textAlignment="center"
+				android:textColor="@color/textPrimary"
+				android:textSize="10sp"
+				android:text="@string/label_recommendation" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/detection"
+			android:layout_width="80dp"
+			android:layout_height="120dp"
+			android:layout_marginHorizontal="6dp"
+			android:gravity="center|bottom"
+			android:orientation="vertical">
+
+			<ImageView
+				android:layout_width="60dp"
+				android:layout_height="wrap_content"
+				android:adjustViewBounds="true"
+				android:contentDescription="@null"
+				android:src="@drawable/hero_detection" />
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:fontFamily="@font/manrope_medium"
+				android:textAlignment="center"
+				android:textColor="@color/textPrimary"
+				android:textSize="10sp"
+				android:text="@string/label_detection" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/pricing"
+			android:layout_width="80dp"
+			android:layout_height="120dp"
+			android:layout_marginHorizontal="6dp"
+			android:gravity="center|bottom"
+			android:orientation="vertical">
+
+			<ImageView
+				android:layout_width="60dp"
+				android:layout_height="wrap_content"
+				android:adjustViewBounds="true"
+				android:contentDescription="@null"
+				android:src="@drawable/hero_pricing" />
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:fontFamily="@font/manrope_medium"
+				android:textAlignment="center"
+				android:textColor="@color/textPrimary"
+				android:textSize="10sp"
+				android:text="@string/label_pricing" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/others"
+			android:layout_width="80dp"
+			android:layout_height="120dp"
+			android:layout_marginHorizontal="6dp"
+			android:gravity="center|bottom"
+			android:orientation="vertical">
+
+			<ImageView
+				android:layout_width="60dp"
+				android:layout_height="wrap_content"
+				android:adjustViewBounds="true"
+				android:contentDescription="@null"
+				android:src="@drawable/hero_others" />
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="28dp"
+				android:layout_marginTop="10dp"
+				android:fontFamily="@font/manrope_medium"
+				android:gravity="center"
+				android:textAlignment="center"
+				android:textColor="@color/textPrimary"
+				android:textSize="10sp"
+				android:text="@string/label_others" />
+
+		</LinearLayout>
+
+	</LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

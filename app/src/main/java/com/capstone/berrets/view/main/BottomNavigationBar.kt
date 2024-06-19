@@ -15,8 +15,8 @@ class BottomNavigationBar: BottomNavigationView {
 	constructor(context: Context, attrs: AttributeSet): super(context, attrs)
 	constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int): super(context, attrs, defStyleAttr)
 
-	private var activeBackground: Drawable = ContextCompat.getDrawable(context, R.drawable.active_bottom_nav) as Drawable
-	private var inActiveBackground: Drawable = ContextCompat.getDrawable(context, R.drawable.inactive_bottom_nav) as Drawable
+	private var activeBackground: Drawable = ContextCompat.getDrawable(context, R.drawable.bottom_nav_active) as Drawable
+	private var inActiveBackground: Drawable = ContextCompat.getDrawable(context, R.drawable.bottom_nav_inactive) as Drawable
 
 	init {
 		setupItemBackground()

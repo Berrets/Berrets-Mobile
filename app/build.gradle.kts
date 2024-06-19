@@ -94,7 +94,8 @@ dependencies {
 
 	// Room
 	implementation(libs.androidx.room.runtime)
-	ksp(libs.room.compiler)
+    implementation(libs.androidx.navigation.fragment)
+    ksp(libs.room.compiler)
 
 	// Tensorflow
 	implementation(libs.tensorflow.lite.support)

@@ -102,5 +102,6 @@
 
 	<!-- Other -->
 	<color name="bg_button_opacity">#33000000</color>
+	<color name="separator_no_transparency">#FFC6C6C8</color>
 
 </resources>

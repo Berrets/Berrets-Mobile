@@ -2,11 +2,14 @@ package com.capstone.berrets.view.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.capstone.berrets.R
@@ -22,16 +25,15 @@ class MainActivity : AppCompatActivity() {
 		enableEdgeToEdge()
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		setContentView(binding.root)
-		ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-			val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-			v.setPadding(
-				systemBars.left,
-				0,
-				systemBars.right,
-				0
-			)
-			insets
-		}
+
+		window.navigationBarColor = resources.getColor(R.color.backgroundPrimary)
+
+		window.decorView.systemUiVisibility = (
+				View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+						or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+						or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+				)
+
 		setupBottomNavbar()
 	}
 
@@ -39,5 +41,13 @@ class MainActivity : AppCompatActivity() {
 		val navView: BottomNavigationView = binding.navView
 		val navController = findNavController(R.id.nav_host_fragment_activity_home)
 		navView.setupWithNavController(navController)
+
+		ViewCompat.setOnApplyWindowInsetsListener(navView) { view, insets ->
+			val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+			view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+				bottomMargin = systemBarsInsets.bottom
+			}
+			insets
+		}
 	}
 }
