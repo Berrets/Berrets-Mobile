@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/main"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".view.login.LoginActivity">
+
+
+	<ImageView
+		android:id="@+id/imageView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:contentDescription="@string/todo"
+		app:layout_constraintStart_toStartOf="parent"
+		app:srcCompat="@drawable/baseline_arrow_back_24"
+		tools:ignore="MissingConstraints"
+		tools:layout_editor_absoluteY="28dp" />
+
+	<TextView
+		android:id="@+id/textView5"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/login"
+		app:layout_constraintBottom_toBottomOf="@+id/imageView"
+		app:layout_constraintTop_toTopOf="@+id/imageView"
+		tools:ignore="MissingConstraints"
+		tools:layout_editor_absoluteX="57dp" />
+
+	<TextView
+		android:id="@+id/textView6"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/textlogin"
+		android:textSize="39sp"
+		android:textStyle="bold"
+		app:layout_constraintStart_toStartOf="@+id/imageView"
+		tools:ignore="MissingConstraints,VisualLintBounds"
+		tools:layout_editor_absoluteY="62dp" />
+
+	<TextView
+		android:id="@+id/textView8"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"
+		android:text="@string/desk_login"
+		android:textSize="16sp"
+		app:layout_constraintStart_toStartOf="@+id/textView6"
+		app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+	<com.google.android.material.textfield.TextInputLayout
+		android:id="@+id/emailInput"
+		style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+		android:layout_width="348dp"
+		android:layout_height="58dp"
+		android:alpha="0"
+		app:startIconDrawable="@drawable/baseline_email_24"
+		tools:alpha="100"
+		tools:ignore="MissingConstraints"
+		tools:layout_editor_absoluteX="31dp"
+		tools:layout_editor_absoluteY="218dp">
+
+		<com.capstone.berrets.view.custom.CustomEmail
+			android:id="@+id/emailEditText"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="@string/input_email"
+			android:inputType="textEmailAddress"
+			android:minHeight="48dp"
+			tools:ignore="TextContrastCheck" />
+
+	</com.google.android.material.textfield.TextInputLayout>
+
+	<com.google.android.material.textfield.TextInputLayout
+		android:id="@+id/passwordInput"
+		style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+		android:layout_width="348dp"
+		android:layout_height="63dp"
+		android:layout_marginTop="16dp"
+		android:alpha="0"
+		app:endIconMode="password_toggle"
+		app:layout_constraintEnd_toEndOf="@+id/emailInput"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="@+id/emailInput"
+		app:layout_constraintTop_toBottomOf="@+id/emailInput"
+		app:startIconDrawable="@drawable/baseline_lock_24"
+		tools:alpha="100">
+
+		<com.capstone.berrets.view.custom.CustomPassword
+			android:id="@+id/passwordEditText"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="@string/input_password"
+			android:inputType="textPassword"
+			android:minHeight="48dp"
+			tools:ignore="TextContrastCheck" />
+	</com.google.android.material.textfield.TextInputLayout>
+
+	<RadioButton
+		android:id="@+id/radioButton"
+		android:layout_width="99dp"
+		android:layout_height="48dp"
+		android:text="@string/IngatSaya"
+		android:textSize="12sp"
+		app:layout_constraintBottom_toTopOf="@+id/button4"
+		app:layout_constraintStart_toStartOf="@+id/passwordInput"
+		app:layout_constraintTop_toBottomOf="@+id/passwordInput"
+		app:layout_constraintVertical_bias="0.5"
+		tools:ignore="MissingConstraints" />
+
+	<TextView
+		android:id="@+id/textView9"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/kata_sandi_lupa"
+		android:textSize="12sp"
+		app:layout_constraintBottom_toBottomOf="@+id/radioButton"
+		app:layout_constraintEnd_toEndOf="@+id/passwordInput"
+		app:layout_constraintTop_toTopOf="@+id/radioButton" />
+
+	<Button
+		android:id="@+id/button4"
+		android:layout_width="326dp"
+		android:layout_height="58dp"
+		android:text="@string/button_masuk"
+		app:layout_constraintEnd_toEndOf="@+id/textView9"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="@+id/radioButton"
+		tools:ignore="MissingConstraints,VisualLintButtonSize,DuplicateSpeakableTextCheck"
+		tools:layout_editor_absoluteY="435dp" />
+
+	<TextView
+		android:id="@+id/textView10"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/belum_akun"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/button6" />
+
+	<Button
+		android:id="@+id/button5"
+		android:layout_width="335dp"
+		android:layout_height="58dp"
+		android:text="@string/button_google"
+		app:layout_constraintEnd_toEndOf="@+id/button4"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="@+id/button4"
+		tools:ignore="MissingConstraints,VisualLintButtonSize"
+		tools:layout_editor_absoluteY="542dp" />
+
+	<Button
+		android:id="@+id/button6"
+		android:layout_width="334dp"
+		android:layout_height="60dp"
+		android:text="@string/button_fb"
+		app:layout_constraintEnd_toEndOf="@+id/button4"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="@+id/button4"
+		tools:ignore="MissingConstraints,VisualLintButtonSize"
+		tools:layout_editor_absoluteY="600dp" />
+
+	<TextView
+		android:id="@+id/textView11"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="25dp"
+		android:text="@string/textbot"
+		app:layout_constraintBottom_toTopOf="@+id/button5"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+	<ImageView
+		android:id="@+id/imageView4"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:contentDescription="TODO"
+		app:srcCompat="@drawable/image_google"
+		tools:ignore="MissingConstraints,ImageContrastCheck"
+		tools:layout_editor_absoluteX="57dp"
+		tools:layout_editor_absoluteY="553dp" />
+
+	<ImageView
+		android:id="@+id/imageView6"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:srcCompat="@drawable/image_facebook"
+		tools:ignore="MissingConstraints"
+		tools:layout_editor_absoluteX="57dp"
+		tools:layout_editor_absoluteY="613dp" />
+
+	<androidx.constraintlayout.widget.Group
+		android:id="@+id/group"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+
+	<androidx.constraintlayout.widget.Group
+		android:id="@+id/group2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guideline5"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_begin="355dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
