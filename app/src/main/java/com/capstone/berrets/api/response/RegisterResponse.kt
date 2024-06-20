@@ -25,3 +25,17 @@ data class RegisterData(
 	@field:SerializedName("__v")
 	val v: Int,
 )
+
+
+data class RegisterRequest(
+	@SerializedName("email")
+	val email: String,
+	@SerializedName("userName")
+	val userName: String,
+	@SerializedName("fullName")
+	val fullName: String,
+	@SerializedName("password")
+	val password: String,
+	@SerializedName("roleUser")
+	val roleUser: String,
+)

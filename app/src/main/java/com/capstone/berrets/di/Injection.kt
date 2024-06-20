@@ -16,8 +16,7 @@ object Injection {
 		val preferences = UserPreferences.getInstance(context.dataStore)
 		val user = runBlocking { preferences.getSession().first()  }
 		val apiService = ApiConfig.getApiService(user.token)
-		val firebaseAuth = Firebase.auth
-		return UserRepository.getInstance(apiService, preferences, firebaseAuth)
+		return UserRepository.getInstance(apiService, preferences)
 	}
 	fun providePostRepository(context: Context): PostRepository {
 		val apiService = ApiConfig.getApiService("token")

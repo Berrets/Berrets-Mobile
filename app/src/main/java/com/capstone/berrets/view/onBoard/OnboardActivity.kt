@@ -1,8 +1,10 @@
 package com.capstone.berrets.view.onBoard
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.berrets.R
 import com.capstone.berrets.databinding.ActivityOnboardBinding
@@ -13,6 +15,7 @@ class OnboardActivity : AppCompatActivity() {
 
 	private lateinit var binding: ActivityOnboardBinding
 
+	@RequiresApi(Build.VERSION_CODES.O)
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		binding = ActivityOnboardBinding.inflate(layoutInflater)

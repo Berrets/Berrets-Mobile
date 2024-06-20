@@ -3,6 +3,7 @@ package com.capstone.berrets.view.main
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
@@ -44,8 +45,8 @@ class MainActivity : AppCompatActivity() {
 						or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
 				)
 
-		intent.getStringExtra("username")?.let {
-			binding.navView.menu.findItem(R.id.navigation_profile).title = it
+		viewModel.getSession().observe(this) { user ->
+			binding.navView.menu.findItem(R.id.navigation_profile).title = user.username
 		}
 
 		setupBottomNavbar()

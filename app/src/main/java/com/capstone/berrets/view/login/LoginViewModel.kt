@@ -14,38 +14,26 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.capstone.berrets.BuildConfig
+import com.capstone.berrets.api.response.LoginResponse
 import com.capstone.berrets.local.repository.UserRepository
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repository: UserRepository) : ViewModel() {
 
-	private val _loginGoogleResponse = MutableLiveData<Boolean>()
-	val loginGoogleResponse: LiveData<Boolean> = _loginGoogleResponse
+	private val _loginResponse = MutableLiveData<LoginResponse>()
+	val loginResponse: LiveData<LoginResponse> = _loginResponse
 
-	@RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
-	fun loginWithGoogle(context: Context) {
+	private val _isLoading = MutableLiveData<Boolean>()
+	val isLoading: LiveData<Boolean> = _isLoading
+
+	fun login(email: String, password: String) {
+		_isLoading.value = true
 		viewModelScope.launch {
-			val credentialManager = CredentialManager.create(context)
-
-			val googleIdOption = GetGoogleIdOption.Builder()
-				.setFilterByAuthorizedAccounts(false)
-				.setServerClientId(BuildConfig.AUTH_WEB_CLIENT_ID)
-				.build()
-
-			val request = GetCredentialRequest.Builder()
-				.addCredentialOption(googleIdOption)
-				.build()
-
-			try {
-				val result: GetCredentialResponse = credentialManager.getCredential(context, request)
-				repository.handleLoginWithGoogle(result) { isSuccess ->
-					_loginGoogleResponse.postValue(isSuccess)
-				}
-			} catch (e: GetCredentialException) {
-				Log.d(TAG, e.message.toString())
-				_loginGoogleResponse.postValue(false)
-			}
+			val result = repository.login(email, password)
+			_loginResponse.value = result
+			_isLoading.value = false
 		}
 	}
 

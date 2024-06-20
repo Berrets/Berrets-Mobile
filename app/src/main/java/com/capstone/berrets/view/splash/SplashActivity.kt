@@ -42,17 +42,13 @@ class SplashActivity : AppCompatActivity() {
 				or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
 			)
 
-		viewModel.authProvider.observe(this) { authProvider ->
-			if (authProvider == "google") {
-				val user = viewModel.getGoogleUser()
-				val intent = Intent(this, MainActivity::class.java)
-				val username = user?.email.toString().getUsernameInEmail()
-				intent.putExtra("username", username)
-				intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-				startActivity(intent)
+		viewModel.getSession().observe(this) { user ->
+			if (user.isLogin) {
+				startActivity(Intent(this, MainActivity::class.java))
+				finish()
 			} else {
-				val intent = Intent(this, OnboardActivity::class.java)
-				startActivity(intent)
+				startActivity(Intent(this, OnboardActivity::class.java))
+				finish()
 			}
 		}
 	}

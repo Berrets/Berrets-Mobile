@@ -59,13 +59,9 @@ class HomeFragment : Fragment() {
 			}
 		}
 
-		viewModel.authProvider.observe(viewLifecycleOwner) { authProvider ->
-			if (authProvider == "google") {
-				val googleUser = viewModel.getGoogleUser()
-				val username = googleUser?.email.toString().getUsernameInEmail()
-				val greeting = getString(R.string.user_greeting)
-				binding.textGreeting.text = String.format(greeting, day, username)
-			}
+		viewModel.getSession().observe(viewLifecycleOwner) { user ->
+			val greeting = resources.getString(R.string.user_greeting)
+			binding.textGreeting.text = String.format(greeting, day, user.fullname)
 		}
 	}
 

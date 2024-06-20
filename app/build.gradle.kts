@@ -18,7 +18,7 @@ android {
 		versionName = "1.0"
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-		buildConfigField("String", "API_BASE_URL", "\"https://story-api.dicoding.dev/v1/\"")
+		buildConfigField("String", "API_BASE_URL", "\"https://capstone-berrets-427010.et.r.appspot.com/api/v1/\"")
 		buildConfigField("String", "AUTH_WEB_CLIENT_ID", "\"405057640680-s9lfmq487prd9uhsmsgrld9o30cskgm1.apps.googleusercontent.com\"")
 	}
 
