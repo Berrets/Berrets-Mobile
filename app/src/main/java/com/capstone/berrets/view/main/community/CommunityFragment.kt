@@ -50,11 +50,6 @@ class CommunityFragment : Fragment() {
 	}
 
 	private fun setupToolbar() {
-		@Suppress("DEPRECATION")
-		val statusBarHeight = view?.rootWindowInsets?.systemWindowInsetTop
-		if (statusBarHeight != null) {
-			binding.statusBarHeight.layoutParams.height = statusBarHeight
-		}
 		binding.toolbar.apply {
 			inflateMenu(R.menu.community_toolbar)
 			setOnMenuItemClickListener {

@@ -41,7 +41,7 @@
             android:layout_weight="1"
             android:textColor="@color/textPrimary"
             android:layout_marginEnd="16dp"
-            android:text="Riwayat Deteksi"/>
+            android:text="@string/detection_history"/>
 
         <LinearLayout
             android:layout_width="wrap_content"

@@ -10,10 +10,14 @@ data class RegisterResponse(
 )
 
 data class RegisterData(
-	@field:SerializedName("fullName")
-	val fullName: String,
+	@field:SerializedName("email")
+	val email: String,
 	@field:SerializedName("userName")
 	val userName: String,
+	@field:SerializedName("fullName")
+	val fullName: String,
+	@field:SerializedName("roleUser")
+	val roleUser: String,
 	@field:SerializedName("_id")
 	val id: String,
 	@field:SerializedName("createdAt")

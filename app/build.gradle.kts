@@ -3,6 +3,7 @@ plugins {
 	alias(libs.plugins.jetbrains.kotlin.android)
 	id("kotlin-parcelize")
 	id("com.google.devtools.ksp")
+	alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -18,6 +19,7 @@ android {
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
 		buildConfigField("String", "API_BASE_URL", "\"https://story-api.dicoding.dev/v1/\"")
+		buildConfigField("String", "AUTH_WEB_CLIENT_ID", "\"405057640680-s9lfmq487prd9uhsmsgrld9o30cskgm1.apps.googleusercontent.com\"")
 	}
 
 	buildTypes {
@@ -30,6 +32,7 @@ android {
 	buildFeatures {
 		viewBinding = true
 		buildConfig = true
+		mlModelBinding = true
 	}
 
 	compileOptions {
@@ -52,6 +55,7 @@ dependencies {
 	implementation(libs.androidx.constraintlayout)
 	implementation(libs.androidx.navigation.ui.ktx)
 	implementation(libs.androidx.navigation.fragment.ktx)
+	implementation(libs.androidx.navigation.fragment)
 
 	// Camera
 	implementation(libs.androidx.camera.camera2)
@@ -68,7 +72,14 @@ dependencies {
 	// ExifInterface
 	implementation(libs.androidx.exifinterface)
 
-	// Google Play Service Location?
+	// Firebase
+	implementation(libs.firebase.auth)
+
+	// Google Play Services
+	implementation(libs.play.services.auth)
+	implementation(libs.androidx.credentials)
+	implementation(libs.androidx.credentials.play.services.auth)
+	implementation(libs.googleid)
 
 	// Image Viewer
 	implementation(libs.glide)
@@ -94,8 +105,7 @@ dependencies {
 
 	// Room
 	implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.navigation.fragment)
-    ksp(libs.room.compiler)
+	ksp(libs.room.compiler)
 
 	// Tensorflow
 	implementation(libs.tensorflow.lite.support)

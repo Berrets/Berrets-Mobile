@@ -4,6 +4,5 @@ data class User(
 	// Perlu disesuaikan
 	val email: String,
 	val token: String,
-	val role: String,
 	val isLogin: Boolean = false
 )

@@ -1,10 +1,13 @@
 package com.capstone.berrets.view.main
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -14,12 +17,19 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.capstone.berrets.R
 import com.capstone.berrets.databinding.ActivityMainBinding
+import com.capstone.berrets.factory.UserViewModelFactory
+import com.capstone.berrets.helper.getUsernameInEmail
+import com.capstone.berrets.view.onBoard.OnboardActivity
 import com.capstone.berrets.view.qualityDetection.DetailDetectionActivity
 
 class MainActivity : AppCompatActivity() {
 
 	private lateinit var binding: ActivityMainBinding
+	private val viewModel by viewModels<MainViewModel> {
+		UserViewModelFactory.getInstance(this)
+	}
 
+	@RequiresApi(Build.VERSION_CODES.O)
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		enableEdgeToEdge()
@@ -33,6 +43,10 @@ class MainActivity : AppCompatActivity() {
 						or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 						or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
 				)
+
+		intent.getStringExtra("username")?.let {
+			binding.navView.menu.findItem(R.id.navigation_profile).title = it
+		}
 
 		setupBottomNavbar()
 	}

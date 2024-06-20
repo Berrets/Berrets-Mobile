@@ -8,7 +8,9 @@
 		<item name="colorPrimaryVariant">@color/primary400</item>
 		<item name="android:statusBarColor">?attr/colorPrimary</item>
 		<item name="android:fontFamily">@font/font_family</item>
+		<item name="android:forceDarkAllowed">false</item>
 	</style>
 
 	<style name="Theme.Berrets" parent="Base.Theme.Berrets" />
+
 </resources>

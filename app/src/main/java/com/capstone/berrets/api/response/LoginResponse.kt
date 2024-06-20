@@ -12,8 +12,12 @@ data class LoginResponse(
 data class TokenObject(
 	@field:SerializedName("_id")
 	val id: String,
+	@field:SerializedName("email")
+	val email: String,
+	@field:SerializedName("userName")
+	val userName: String,
 	@field:SerializedName("fullName")
 	val fullName: String,
-	@field:SerializedName("userName")
-	val userName: String
+	@field:SerializedName("roleUser")
+	val roleUser: String,
 )

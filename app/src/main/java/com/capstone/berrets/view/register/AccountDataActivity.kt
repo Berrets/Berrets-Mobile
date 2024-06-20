@@ -10,29 +10,29 @@ import com.capstone.berrets.view.main.MainActivity
 
 class AccountDataActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAccountDataBinding
+	private lateinit var binding: ActivityAccountDataBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityAccountDataBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		binding = ActivityAccountDataBinding.inflate(layoutInflater)
+		setContentView(binding.root)
 
-        window.statusBarColor = resources.getColor(R.color.backgroundPrimary)
-        window.navigationBarColor = resources.getColor(R.color.backgroundSecondary)
+		window.statusBarColor = resources.getColor(R.color.backgroundPrimary)
+		window.navigationBarColor = resources.getColor(R.color.backgroundSecondary)
 
-        window.decorView.systemUiVisibility = (
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-                        or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
-                )
+		window.decorView.systemUiVisibility = (
+			View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+				or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+				or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+			)
 
-        binding.btnBack.setOnClickListener {
-            onBackPressed()
-        }
+		binding.btnBack.setOnClickListener {
+			onBackPressed()
+		}
 
-        binding.btnRegister.setOnClickListener {
-            val loginIntent = Intent(this, MainActivity::class.java)
-            startActivity(loginIntent)
-        }
-    }
+		binding.btnRegister.setOnClickListener {
+			val loginIntent = Intent(this, MainActivity::class.java)
+			startActivity(loginIntent)
+		}
+	}
 }

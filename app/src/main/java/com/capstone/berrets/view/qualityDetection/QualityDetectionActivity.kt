@@ -1,16 +1,24 @@
 package com.capstone.berrets.view.qualityDetection
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.capstone.berrets.R
 import com.capstone.berrets.databinding.ActivityQualityDetectionBinding
 import com.capstone.berrets.helper.dp
+import com.capstone.berrets.view.camera.CameraActivity
+import com.capstone.berrets.view.camera.CameraActivity.Companion.CAMERAX_RESULT
 import com.capstone.berrets.view.qualityDetection.custom.roundedShape
 import com.capstone.berrets.view.register.VerifyActivity
 
@@ -18,14 +26,28 @@ class QualityDetectionActivity : AppCompatActivity() {
 
 	private lateinit var binding: ActivityQualityDetectionBinding
 	private val handler = Handler()
-	private var scrollAmount = 2 // Adjust the scroll amount as needed
+	private var scrollAmount = 2
 	private lateinit var scrollRunnable: Runnable
 	private var scrollDirectionPrimary = SCROLL_RIGHT
 	private var scrollDirectionSecondary = SCROLL_LEFT
 
-	companion object {
-		private const val SCROLL_RIGHT = 1
-		private const val SCROLL_LEFT = -1
+	private var currentImageUri: Uri? = null
+	private val requestPermissionLauncher = registerForActivityResult(
+		ActivityResultContracts.RequestPermission()
+	) { isGranted: Boolean ->
+		if (isGranted) {
+			Toast.makeText(this, "Permission request granted", Toast.LENGTH_LONG).show()
+		} else {
+			Toast.makeText(this, "Permission request denied", Toast.LENGTH_LONG).show()
+		}
+	}
+	private val launcherIntentCameraX = registerForActivityResult(
+		ActivityResultContracts.StartActivityForResult()
+	) {
+		if (it.resultCode == CAMERAX_RESULT) {
+			currentImageUri = it.data?.getStringExtra(CameraActivity.EXTRA_CAMERAX_IMAGE)?.toUri()
+			startDetection(currentImageUri)
+		}
 	}
 
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,13 +66,22 @@ class QualityDetectionActivity : AppCompatActivity() {
 			insets
 		}
 
+		if (!allPermissionGranted()) {
+			requestPermissionLauncher.launch(REQUIRED_PERMISSION)
+		}
+
 		setupActivity()
 		startAutoScroll()
 	}
 
+	override fun onDestroy() {
+		super.onDestroy()
+		handler.removeCallbacks(scrollRunnable)
+	}
+
 	private fun setupActivity() {
 		binding.btnClose.setOnClickListener {
-			onBackPressed()
+			finish()
 		}
 
 		binding.btnHistory.setOnClickListener {
@@ -60,6 +91,7 @@ class QualityDetectionActivity : AppCompatActivity() {
 
 		createQualityCards()
 		createRiceParameterCards()
+		binding.fabCamera.setOnClickListener { startCamera() }
 	}
 
 	private fun startAutoScroll() {
@@ -96,11 +128,6 @@ class QualityDetectionActivity : AppCompatActivity() {
 			}
 		}
 		handler.post(scrollRunnable)
-	}
-
-	override fun onDestroy() {
-		super.onDestroy()
-		handler.removeCallbacks(scrollRunnable)
 	}
 
 	private fun createQualityCards() {
@@ -252,5 +279,25 @@ class QualityDetectionActivity : AppCompatActivity() {
 			riceType.text = getString(R.string.butir_gabah)
 			riceDescription.text = getString(R.string.description_butir_gabah)
 		}
+	}
+
+	private fun startCamera() {
+		val intent = Intent(this@QualityDetectionActivity, CameraActivity::class.java)
+		launcherIntentCameraX.launch(intent)
+	}
+
+	private fun startDetection(imageUri: Uri?) {
+
+	}
+
+	private fun allPermissionGranted() = ContextCompat.checkSelfPermission(
+		this,
+		REQUIRED_PERMISSION
+	) == PackageManager.PERMISSION_GRANTED
+
+	companion object {
+		private const val SCROLL_RIGHT = 1
+		private const val SCROLL_LEFT = -1
+		private const val REQUIRED_PERMISSION = android.Manifest.permission.CAMERA
 	}
 }

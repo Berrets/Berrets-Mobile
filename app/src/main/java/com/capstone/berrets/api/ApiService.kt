@@ -10,8 +10,10 @@ interface ApiService {
 	@FormUrlEncoded
 	@POST("register")
 	suspend fun register(
-		@Field("fullName") name: String,
 		@Field("email") email: String,
+		@Field("userName") userName: String,
+		@Field("fullName") fullName: String,
+		@Field("roleUser") roleUser: String,
 		@Field("password") password: String
 	): RegisterResponse
 
@@ -21,4 +23,10 @@ interface ApiService {
 		@Field("userName") email: String,
 		@Field("password") password: String
 	): LoginResponse
+
+	@FormUrlEncoded
+	@POST("get-email")
+	suspend fun getEmail(
+		@Field("email") email: String
+	): RegisterResponse
 }

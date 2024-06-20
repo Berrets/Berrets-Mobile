@@ -12,9 +12,14 @@ import com.capstone.berrets.databinding.ActivityRegisterBinding
 class HistoryDetectionActivity : AppCompatActivity() {
 
 	private lateinit var binding: ActivityHistoryDetectionBinding
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		binding = ActivityHistoryDetectionBinding.inflate(layoutInflater)
 		setContentView(binding.root)
+
+		binding.btnBack.setOnClickListener {
+			finish()
+		}
 	}
 }

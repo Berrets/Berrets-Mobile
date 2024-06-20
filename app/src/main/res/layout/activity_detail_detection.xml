@@ -93,6 +93,7 @@
                 android:background="@drawable/shape_rounded"
                 android:backgroundTint="@color/backgroundPrimary"
                 android:paddingStart="16dp"
+								android:paddingEnd="16dp"
                 android:paddingBottom="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginHorizontal="16dp">
@@ -110,7 +111,7 @@
                     style="@style/TextBase_SemiBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ikhtisar Identifikasi"
+                    android:text="@string/title_identification_overview"
                     android:textColor="@color/textPrimary"
                     android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -136,7 +137,7 @@
                     android:paddingEnd="8dp"
                     android:paddingVertical="6dp"
                     android:textColor="@color/default_text"
-                    android:text="Detail"
+                    android:text="@string/detail"
                     android:drawablePadding="4dp"
                     android:layout_marginEnd="16dp"
                     app:drawableEndCompat="@drawable/ic_caret_down"
@@ -208,7 +209,7 @@
                         style="@style/TextExtraSmall_Bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="BUTIR BERAS"
+                        android:text="@string/rice_grains"
                         android:textColor="@color/textSecondary"
                         android:layout_marginTop="6dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -233,7 +234,7 @@
                         android:layout_height="wrap_content"
                         tools:text="/ 0 Objek"
                         android:textColor="@color/textSecondary"
-                        android:layout_marginLeft="4dp"
+                        android:layout_marginStart="4dp"
                         android:layout_marginBottom="4dp"
                         app:layout_constraintBottom_toBottomOf="@+id/total_grains"
                         app:layout_constraintStart_toEndOf="@+id/total_grains" />
@@ -268,7 +269,7 @@
                         style="@style/TextExtraSmall_Bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="HARGA PASAR"
+                        android:text="@string/market_price"
                         android:textColor="@color/textSecondary"
                         android:layout_marginTop="6dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -290,9 +291,9 @@
                         style="@style/TextBase_Regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="/ Kg"
+                        android:text="@string/denom_kg"
                         android:textColor="@color/textSecondary"
-                        android:layout_marginLeft="4dp"
+                        android:layout_marginStart="4dp"
                         android:layout_marginBottom="4dp"
                         app:layout_constraintBottom_toBottomOf="@+id/total_prices"
                         app:layout_constraintStart_toEndOf="@+id/total_prices" />
@@ -315,12 +316,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/TextBase_SemiBold"
-                    android:text="Syarat Umum"
+                    android:text="@string/conditions"
                     android:paddingHorizontal="16dp"
                     android:textColor="@color/textPrimary"
                     android:drawablePadding="4dp"
-                    android:drawableEnd="@drawable/ic_help_filled"
-                    android:drawableTint="@color/textTertiary"/>
+										app:drawableEndCompat="@drawable/ic_help_filled"
+										app:drawableTint="@color/textTertiary" />
 
                 <View
                     android:layout_width="match_parent"
@@ -349,16 +350,16 @@
                             style="@style/Heading4"
                             android:fontFamily="@font/manrope_bold"
                             android:textColor="@color/textPrimary"
-                            tools:text="-"
-                            android:drawablePadding="8dp"
-                            android:drawableStart="@drawable/ic_water_half_bold"
-                            android:drawableTint="@color/infoBase"/>
+														app:drawableStartCompat="@drawable/ic_water_half_bold"
+														app:drawableTint="@color/infoBase"
+														tools:text="-"
+														android:drawablePadding="8dp" />
 
                         <TextView
                             style="@style/TextExtraSmall_Bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="KADAR AIR"
+                            android:text="@string/water_level"
                             android:textColor="@color/textSecondary"
                             android:layout_marginTop="6dp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -386,16 +387,16 @@
                             style="@style/Heading4"
                             android:fontFamily="@font/manrope_bold"
                             android:textColor="@color/textPrimary"
-                            tools:text="-"
-                            android:drawablePadding="8dp"
-                            android:drawableStart="@drawable/ic_wind_bold"
-                            android:drawableTint="@color/positiveBase"/>
+														app:drawableStartCompat="@drawable/ic_wind_bold"
+														app:drawableTint="@color/positiveBase"
+														tools:text="-"
+														android:drawablePadding="8dp" />
 
                         <TextView
                             style="@style/TextExtraSmall_Bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="BAU BERAS"
+                            android:text="@string/rice_stench"
                             android:textColor="@color/textSecondary"
                             android:layout_marginTop="6dp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -423,16 +424,16 @@
                             style="@style/Heading4"
                             android:fontFamily="@font/manrope_bold"
                             android:textColor="@color/textPrimary"
-                            tools:text="-"
-                            android:drawablePadding="8dp"
-                            android:drawableStart="@drawable/ic_flask_bold"
-                            android:drawableTint="@color/negativeBase"/>
+														app:drawableStartCompat="@drawable/ic_flask_bold"
+														app:drawableTint="@color/negativeBase"
+														tools:text="-"
+														android:drawablePadding="8dp" />
 
                         <TextView
                             style="@style/TextExtraSmall_Bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="BAHAN KIMIA"
+                            android:text="@string/chemist_level"
                             android:textColor="@color/textSecondary"
                             android:layout_marginTop="6dp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -460,7 +461,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/TextBase_SemiBold"
-                    android:text="Rekomendasi Penanganan"
+                    android:text="@string/handle_recommendation"
                     android:paddingHorizontal="16dp"
                     android:layout_marginBottom="4dp"
                     android:textColor="@color/textPrimary"/>
@@ -469,7 +470,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/TextExtraSmall_Regular"
-                    android:text="Pelajari lebih lanjut untuk mengevaluasi kualitas beras putih yang Anda identifikasi"
+                    android:text="@string/handle_recommendation_under"
                     android:paddingHorizontal="16dp"
                     android:textColor="@color/textSecondary"/>
 
@@ -490,11 +491,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_info_filled"
-                        android:drawableTint="@color/positiveBase"
-                        android:drawablePadding="10dp"
-                        style="@style/TextBase_SemiBold"
-                        tools:text="Butir patah dan menir perlu dikurangi"
+												android:drawablePadding="10dp"
+												style="@style/TextBase_SemiBold"
+												app:drawableStartCompat="@drawable/ic_info_filled"
+												app:drawableTint="@color/positiveBase"
+												tools:text="Butir patah dan menir perlu dikurangi"
                         android:textColor="@color/positiveDark"
                         android:layout_marginBottom="4dp"/>
 
