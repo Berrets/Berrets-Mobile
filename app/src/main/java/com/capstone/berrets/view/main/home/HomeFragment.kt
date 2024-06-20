@@ -61,7 +61,7 @@ class HomeFragment : Fragment() {
 
 		viewModel.getSession().observe(viewLifecycleOwner) { user ->
 			val greeting = resources.getString(R.string.user_greeting)
-			binding.textGreeting.text = String.format(greeting, day, user.fullname)
+			binding.textGreeting.text = String.format(greeting, day, user.username)
 		}
 	}
 
