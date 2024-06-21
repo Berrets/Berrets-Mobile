@@ -1,6 +1,7 @@
 package com.capstone.berrets.view.camera
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
 import android.view.OrientationEventListener
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
+import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
@@ -18,7 +20,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.capstone.berrets.R
 import com.capstone.berrets.databinding.ActivityCameraBinding
+import com.capstone.berrets.helper.compressBitmap
 import com.capstone.berrets.helper.createCustomTempFile
+import com.capstone.berrets.helper.imageProxyToBitmap
+import java.io.ByteArrayOutputStream
 
 class CameraActivity : AppCompatActivity() {
 
@@ -93,38 +98,34 @@ class CameraActivity : AppCompatActivity() {
 					imageCapture
 				)
 			} catch (exc: Exception) {
-				Toast.makeText(this@CameraActivity, "Gagal memunculkan kamera.", Toast.LENGTH_SHORT).show()
+				Toast.makeText(this@CameraActivity, "Gagal homunculus kamera.", Toast.LENGTH_SHORT).show()
 			}
 		}, ContextCompat.getMainExecutor(this))
 	}
 
 	private fun takePhoto() {
 		val imageCapture = imageCapture ?: return
-		val photoFile = createCustomTempFile(application)
-		val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
 
-		imageCapture.takePicture(
-			outputOptions,
-			ContextCompat.getMainExecutor(this),
-			object: ImageCapture.OnImageSavedCallback {
-				override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-					val intent = Intent()
-					intent.putExtra(EXTRA_CAMERAX_IMAGE, outputFileResults.savedUri.toString())
-					setResult(CAMERAX_RESULT, intent)
-
-					finish()
+		imageCapture.takePicture(ContextCompat.getMainExecutor(this), object : ImageCapture.OnImageCapturedCallback() {
+			override fun onCaptureSuccess(image: ImageProxy) {
+				val bitmap = imageProxyToBitmap(image)
+				val byteArray = compressBitmap(bitmap, 80)
+				val intent = Intent().apply {
+					putExtra(EXTRA_CAMERAX_IMAGE, byteArray)
 				}
-
-				override fun onError(exception: ImageCaptureException) {
-					Toast.makeText(
-						this@CameraActivity,
-						"Gagal mengambil gambar.",
-						Toast.LENGTH_SHORT
-					).show()
-					Log.e(TAG, "onError: ${exception.message}")
-				}
+				setResult(CAMERAX_RESULT, intent)
+				finish()
 			}
-		)
+
+			override fun onError(exception: ImageCaptureException) {
+				Toast.makeText(
+					this@CameraActivity,
+					"Gagal mengambil gambar.",
+					Toast.LENGTH_SHORT
+				).show()
+				Log.e(TAG, "onError: ${exception.message}")
+			}
+		})
 	}
 
 	companion object {

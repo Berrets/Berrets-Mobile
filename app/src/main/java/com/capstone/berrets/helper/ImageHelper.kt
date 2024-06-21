@@ -7,6 +7,7 @@ import android.graphics.Matrix
 import android.net.Uri
 import android.os.Environment
 import android.util.Base64
+import androidx.camera.core.ImageProxy
 import androidx.core.content.FileProvider
 import androidx.exifinterface.media.ExifInterface
 import com.capstone.berrets.BuildConfig
@@ -15,6 +16,7 @@ import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.InputStream
+import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -22,24 +24,6 @@ import java.util.Locale
 private const val FILENAME_FORMAT = "yyyyMdd_HHmmss"
 private const val MAXIMUM_SIZE = 1000000
 private val timeStamp: String = SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(Date())
-
-/*
-fun getImageUri(context: Context): Uri {
-	var uri: Uri? = null
-	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-		val contentValues = ContentValues().apply {
-			put(MediaStore.MediaColumns.DISPLAY_NAME, "$timeStamp.jpg")
-			put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
-			put(MediaStore.MediaColumns.RELATIVE_PATH, "Pictures/MyCamera/")
-		}
-		uri = context.contentResolver.insert(
-			MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-			contentValues
-		)
-	}
-	return uri ?: getImageUriForPreQ(context)
-}
-*/
 
 private fun getImageUriForPreQ(context: Context): Uri {
 	val filesDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
@@ -108,12 +92,23 @@ fun rotateImage(source: Bitmap, angle: Float): Bitmap? {
 	return Bitmap.createBitmap(source, 0, 0, source.width, source.height, matrix, true)
 }
 
-fun bitmapToByteArray(bitmap: Bitmap): ByteArray {
+fun imageProxyToBitmap(image: ImageProxy): Bitmap {
+	val planeProxy = image.planes[0]
+	val buffer: ByteBuffer = planeProxy.buffer
+	val bytes = ByteArray(buffer.remaining())
+	buffer.get(bytes)
+	return BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+}
+
+fun compressBitmap(bitmap: Bitmap, quality: Int): ByteArray {
 	val stream = ByteArrayOutputStream()
-	bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+	bitmap.compress(Bitmap.CompressFormat.JPEG, quality, stream)
 	return stream.toByteArray()
 }
 
-fun byteArrayToBitmap(byteArray: ByteArray): Bitmap {
-	return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+fun bitmapToBase64(bitmap: Bitmap): String {
+	val outputStream = ByteArrayOutputStream()
+	bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+	val byteArray = outputStream.toByteArray()
+	return Base64.encodeToString(byteArray, Base64.NO_WRAP)
 }

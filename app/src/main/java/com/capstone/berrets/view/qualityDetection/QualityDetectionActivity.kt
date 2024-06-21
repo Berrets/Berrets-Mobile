@@ -1,28 +1,32 @@
 package com.capstone.berrets.view.qualityDetection
 
+import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
-import android.widget.Toast
+import android.os.Looper
+import android.provider.MediaStore
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.capstone.berrets.R
 import com.capstone.berrets.databinding.ActivityQualityDetectionBinding
 import com.capstone.berrets.factory.UserViewModelFactory
-import com.capstone.berrets.helper.bitmapToByteArray
+import com.capstone.berrets.helper.bitmapToBase64
 import com.capstone.berrets.helper.dp
-import com.capstone.berrets.view.camera.CameraActivity
-import com.capstone.berrets.view.camera.CameraActivity.Companion.CAMERAX_RESULT
 import com.capstone.berrets.view.qualityDetection.custom.roundedShape
 import com.capstone.berrets.view.qualityDetection.viewModel.QualityDetectionViewModel
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class QualityDetectionActivity : AppCompatActivity() {
 
@@ -30,31 +34,11 @@ class QualityDetectionActivity : AppCompatActivity() {
 	private val viewModel by viewModels<QualityDetectionViewModel> {
 		UserViewModelFactory.getInstance(this)
 	}
-	private val handler = Handler()
+	private val handler = Handler(Looper.getMainLooper())
 	private var scrollAmount = 2
 	private lateinit var scrollRunnable: Runnable
 	private var scrollDirectionPrimary = SCROLL_RIGHT
 	private var scrollDirectionSecondary = SCROLL_LEFT
-
-	private var currentImageUri: Uri? = null
-	private var currentImageBitmap: Bitmap? = null
-	private val requestPermissionLauncher = registerForActivityResult(
-		ActivityResultContracts.RequestPermission()
-	) { isGranted: Boolean ->
-		if (isGranted) {
-			Toast.makeText(this, "Permission request granted", Toast.LENGTH_LONG).show()
-		} else {
-			Toast.makeText(this, "Permission request denied", Toast.LENGTH_LONG).show()
-		}
-	}
-	private val launcherIntentCameraX = registerForActivityResult(
-		ActivityResultContracts.StartActivityForResult()
-	) {
-		if (it.resultCode == CAMERAX_RESULT) {
-			currentImageBitmap = it.data?.extras?.get("data") as Bitmap
-			uploadDetectionData(currentImageBitmap)
-		}
-	}
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -72,12 +56,15 @@ class QualityDetectionActivity : AppCompatActivity() {
 			insets
 		}
 
-		if (!allPermissionGranted()) {
-			requestPermissionLauncher.launch(REQUIRED_PERMISSION)
-		}
-
 		viewModel.isLoading.observe(this) {
 			showLoading(it)
+		}
+
+		viewModel.uploadDetection.observe(this) {
+			if (it.message == "Success") {
+				val historyIntent = Intent(this, HistoryDetectionActivity::class.java)
+				startActivity(historyIntent)
+			}
 		}
 
 		setupActivity()
@@ -87,6 +74,25 @@ class QualityDetectionActivity : AppCompatActivity() {
 	override fun onDestroy() {
 		super.onDestroy()
 		handler.removeCallbacks(scrollRunnable)
+	}
+
+	@Deprecated("This method has been deprecated in favor of using the Activity Result API\n      which brings increased type safety via an {@link ActivityResultContract} and the prebuilt\n      contracts for common intents available in\n      {@link androidx.activity.result.contract.ActivityResultContracts}, provides hooks for\n      testing, and allow receiving results in separate, testable classes independent from your\n      activity. Use\n      {@link #registerForActivityResult(ActivityResultContract, ActivityResultCallback)}\n      with the appropriate {@link ActivityResultContract} and handling the result in the\n      {@link ActivityResultCallback#onActivityResult(Object) callback}.")
+	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+		super.onActivityResult(requestCode, resultCode, data)
+		if (resultCode == Activity.RESULT_OK) {
+			when (requestCode) {
+				REQUEST_CAMERA -> {
+					val imageBitmap = data?.extras?.get("data") as Bitmap
+					uploadDetectionData(imageBitmap)
+				}
+				REQUEST_GALLERY -> {
+					data?.data?.let { uri ->
+						val imageBitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
+						uploadDetectionData(imageBitmap)
+					}
+				}
+			}
+		}
 	}
 
 	private fun setupActivity() {
@@ -292,20 +298,20 @@ class QualityDetectionActivity : AppCompatActivity() {
 	}
 
 	private fun startCamera() {
-		val intent = Intent(this@QualityDetectionActivity, CameraActivity::class.java)
-		launcherIntentCameraX.launch(intent)
+		if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+			ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), REQUEST_CAMERA_PERMISSION)
+		} else {
+			val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+			startActivityForResult(intent, REQUEST_CAMERA)
+		}
 	}
 
-	private fun uploadDetectionData(image: Bitmap?) {
-		val fileName = "image_${System.currentTimeMillis()}.jpg"
-		val imageDetection = bitmapToByteArray(image!!)
-		viewModel.uploadDetection(imageDetection, fileName)
+	private fun uploadDetectionData(imageBitmap: Bitmap) {
+		val timeStamp: String = SimpleDateFormat("HHmmss", Locale.getDefault()).format(Date())
+		val fileName = "IMG_$timeStamp.jpg"
+		val imageDetection = bitmapToBase64(imageBitmap)
+		viewModel.uploadDetection(fileName, imageDetection)
 	}
-
-	private fun allPermissionGranted() = ContextCompat.checkSelfPermission(
-		this,
-		REQUIRED_PERMISSION
-	) == PackageManager.PERMISSION_GRANTED
 
 	private fun showLoading(isLoading: Boolean) {
 		if (isLoading) {
@@ -318,6 +324,8 @@ class QualityDetectionActivity : AppCompatActivity() {
 	companion object {
 		private const val SCROLL_RIGHT = 1
 		private const val SCROLL_LEFT = -1
-		private const val REQUIRED_PERMISSION = android.Manifest.permission.CAMERA
+		private const val REQUEST_CAMERA = 1001
+		private const val REQUEST_GALLERY = 1002
+		private const val REQUEST_CAMERA_PERMISSION = 1003
 	}
 }

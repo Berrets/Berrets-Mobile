@@ -34,13 +34,10 @@ class UserRepository private constructor(
 	suspend fun checkEmailIsRegistered(email: String): Boolean {
 		try {
 			val response = apiService.getEmail(ExistEmailRequest(email))
-			Log.d(TAG, "checkEmailIsRegistered: ${response.message}")
-			Log.d(TAG, (response.message != "Email not registered").toString())
 			return false
 		} catch (e: HttpException) {
 			val errorBody = e.response()?.errorBody()?.string()
 			val response = Gson().fromJson(errorBody, ExistEmailResponse::class.java)
-			Log.e(TAG, "checkEmailIsRegistered: ${response.message}")
 			return response.message != "Email not registered"
 		}
 	}
@@ -114,7 +111,7 @@ class UserRepository private constructor(
 	// LOGOUT
 
 	// UPLOAD DETECTION
-	suspend fun uploadDetection(image: ByteArray, fileName: String): DetectionDataResponse {
+	suspend fun uploadDetection(fileName: String, image: String): DetectionDataResponse {
 		try {
 			val response = apiService.createDetectionData(
 				DetectionDataRequest(
@@ -135,16 +132,9 @@ class UserRepository private constructor(
 	companion object {
 		private const val TAG = "UserRepository"
 
-		@Volatile
-		private var INSTANCE: UserRepository? = null
-
 		fun getInstance(
 			apiService: ApiService,
-			userPreferences: UserPreferences,
-		): UserRepository {
-			return INSTANCE ?: synchronized(this) {
-				INSTANCE ?: UserRepository(apiService, userPreferences).also { INSTANCE = it }
-			}
-		}
+			userPreferences: UserPreferences
+		) = UserRepository(apiService, userPreferences)
 	}
 }

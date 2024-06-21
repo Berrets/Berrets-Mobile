@@ -9,8 +9,6 @@ import com.capstone.berrets.api.response.LoginResponse
 import com.capstone.berrets.api.response.RegisterRequest
 import com.capstone.berrets.api.response.RegisterResponse
 import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 interface ApiService {
