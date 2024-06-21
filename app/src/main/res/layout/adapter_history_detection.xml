@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:layout_marginBottom="-1dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_placeholder_square" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/title_data"
+        style="@style/TextExtraLarge_SemiBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textPrimary"
+        tools:text="IMG_000000"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toEndOf="@+id/card_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/quality_data"
+        style="@style/TextExtraSmall_Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_circle"
+        android:backgroundTint="@color/default_bg"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="4dp"
+        android:textColor="@color/default_text"
+        app:layout_constraintBottom_toBottomOf="@+id/title_data"
+        app:layout_constraintStart_toEndOf="@+id/title_data"
+        app:layout_constraintTop_toTopOf="@+id/title_data"
+        android:layout_marginLeft="8dp"
+        tools:text="Kualitas" />
+
+    <TextView
+        android:id="@+id/created_data"
+        style="@style/TextExtraSmall_Regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textSecondary"
+        tools:text="Timestamp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@+id/title_data"
+        app:layout_constraintTop_toBottomOf="@+id/title_data" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

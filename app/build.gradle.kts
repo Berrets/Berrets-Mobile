@@ -3,6 +3,7 @@ plugins {
 	alias(libs.plugins.jetbrains.kotlin.android)
 	id("kotlin-parcelize")
 	id("com.google.devtools.ksp")
+	alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -17,7 +18,8 @@ android {
 		versionName = "1.0"
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-		buildConfigField("String", "API_BASE_URL", "\"YOUR_API_BASE_URL\"")
+		buildConfigField("String", "API_BASE_URL", "\"https://capstone-berrets-427010.et.r.appspot.com/api/v1/\"")
+		buildConfigField("String", "AUTH_WEB_CLIENT_ID", "\"405057640680-s9lfmq487prd9uhsmsgrld9o30cskgm1.apps.googleusercontent.com\"")
 	}
 
 	buildTypes {
@@ -30,6 +32,7 @@ android {
 	buildFeatures {
 		viewBinding = true
 		buildConfig = true
+		mlModelBinding = true
 	}
 
 	compileOptions {
@@ -48,8 +51,11 @@ dependencies {
 	implementation(libs.androidx.appcompat)
 	implementation(libs.androidx.activity)
 	implementation(libs.androidx.fragment)
-	implementation(libs.androidx.navigation)
+	implementation(libs.androidx.fragment.ktx)
 	implementation(libs.androidx.constraintlayout)
+	implementation(libs.androidx.navigation.ui.ktx)
+	implementation(libs.androidx.navigation.fragment.ktx)
+	implementation(libs.androidx.navigation.fragment)
 
 	// Camera
 	implementation(libs.androidx.camera.camera2)
@@ -66,11 +72,21 @@ dependencies {
 	// ExifInterface
 	implementation(libs.androidx.exifinterface)
 
-	// Google Play Service Location?
+	// Firebase
+	implementation(libs.firebase.auth)
+
+	// Google Play Services
+	implementation(libs.play.services.auth)
+	implementation(libs.androidx.credentials)
+	implementation(libs.androidx.credentials.play.services.auth)
+	implementation(libs.googleid)
 
 	// Image Viewer
 	implementation(libs.glide)
 	implementation(libs.circle.image.view)
+
+	// Legacy
+	implementation(libs.androidx.legacy.support.v4)
 
 	// Lifecycle
 	implementation(libs.androidx.lifecycle.runtime.ktx)

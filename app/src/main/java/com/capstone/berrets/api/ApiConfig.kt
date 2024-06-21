@@ -14,10 +14,6 @@ object ApiConfig {
 		} else {
 			HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
 		}
-		/*
-			authInterceptor: Interceptor digunakan untuk menambahkan token ke header request
-			implementasi tergantung endpoint nya
-		 */
 		val authInterceptor = Interceptor { chain ->
 			val req = chain.request()
 			val requestHeaders = req.newBuilder()

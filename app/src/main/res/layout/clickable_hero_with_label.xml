@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/item"
+	android:layout_width="80dp"
+	android:layout_height="120dp"
+	android:orientation="vertical"
+	android:gravity="center|bottom">
+
+	<ImageView
+		android:id="@+id/item_image"
+		android:layout_width="60dp"
+		android:layout_height="wrap_content"
+		android:adjustViewBounds="true"
+		android:contentDescription="@null"
+		android:scaleType="centerCrop"
+		tools:src="@drawable/hero_pricing" />
+
+	<TextView
+		android:id="@+id/item_label"
+		android:fontFamily="@font/manrope_medium"
+		android:textSize="10sp"
+		tools:text="@string/label_pricing"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:textColor="@color/textPrimary"
+		android:textAlignment="center"/>
+</LinearLayout>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "405057640680",
+    "project_id": "berrets",
+    "storage_bucket": "berrets.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405057640680:android:51346342b07654e9d0515d",
+        "android_client_info": {
+          "package_name": "com.capstone.berrets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405057640680-1d7msalu7tobp9gc6a01ngju1fa35568.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.capstone.berrets",
+            "certificate_hash": "e557dc16805c751b626d3d7ae197584e31d55288"
+          }
+        },
+        {
+          "client_id": "405057640680-s9lfmq487prd9uhsmsgrld9o30cskgm1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1nFlFe0BapXGgKj08h-ZGuxJMLWFiC0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405057640680-s9lfmq487prd9uhsmsgrld9o30cskgm1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

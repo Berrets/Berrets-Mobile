@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundSecondary"
+    tools:context=".view.qualityDetection.DetailDetectionActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_grains"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/sample_grains" />
+
+            <LinearLayout
+                android:id="@+id/linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|start"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/title_detection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Heading5"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:textColor="@color/textPrimary"
+                    tools:text="Nama File"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:id="@+id/quality_detection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="4dp"
+                    android:paddingHorizontal="12dp"
+                    style="@style/TextExtraSmall_Bold"
+                    tools:text="Kualitas"
+                    android:textColor="@color/default_text"
+                    android:background="@drawable/shape_circle"
+                    android:backgroundTint="@color/default_bg"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:id="@+id/created_detection"
+                    style="@style/TextExtraSmall_Regular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="Diambil pada ..."
+                    android:textColor="@color/textSecondary"/>
+
+                <TextView
+                    android:id="@+id/inference_time_detection"
+                    style="@style/TextExtraSmall_Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="0ms"
+                    android:textColor="@color/textSecondary"/>
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/overview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rounded"
+                android:backgroundTint="@color/backgroundPrimary"
+                android:paddingStart="16dp"
+								android:paddingEnd="16dp"
+                android:paddingBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp">
+
+                <ImageView
+                    android:layout_width="175dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_overview"
+                    android:adjustViewBounds="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/overview_title"
+                    style="@style/TextBase_SemiBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_identification_overview"
+                    android:textColor="@color/textPrimary"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/total_object"
+                    style="@style/Heading4"
+                    android:fontFamily="@font/manrope_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="0 Objek"
+                    android:textColor="@color/textPrimary"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/overview_title" />
+
+                <TextView
+                    style="@style/TextExtraSmall_Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_detail"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="8dp"
+                    android:paddingVertical="6dp"
+                    android:textColor="@color/default_text"
+                    android:text="@string/detail"
+                    android:drawablePadding="4dp"
+                    android:layout_marginEnd="16dp"
+                    app:drawableEndCompat="@drawable/ic_caret_down"
+                    app:drawableTint="@color/textSecondary"
+                    app:layout_constraintBottom_toBottomOf="@+id/total_object"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/total_object" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/total_object"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="8dp"
+                            android:layout_weight="1"
+                            android:background="@color/butir_kepala_outline" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_rounded"
+                    android:backgroundTint="@color/backgroundPrimary"
+                    android:paddingTop="10dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="16dp"
+                    android:layout_marginEnd="16dp">
+
+                    <ImageView
+                        android:id="@+id/grain_icon"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_grain"
+                        android:padding="6dp"
+                        android:background="@drawable/shape_circle"
+                        android:backgroundTint="@color/premium_bg"
+                        app:tint="@color/premium_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/grain_title"
+                        style="@style/TextExtraSmall_Bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rice_grains"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginTop="6dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/total_grains"
+                        style="@style/Heading4"
+                        android:fontFamily="@font/manrope_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="0"
+                        android:textColor="@color/textPrimary"
+                        android:layout_marginTop="2dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/grain_title" />
+
+                    <TextView
+                        android:id="@+id/total_object2"
+                        style="@style/TextBase_Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="/ 0 Objek"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="4dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/total_grains"
+                        app:layout_constraintStart_toEndOf="@+id/total_grains" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_rounded"
+                    android:backgroundTint="@color/backgroundPrimary"
+                    android:paddingTop="10dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:id="@+id/price_icon"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_price"
+                        android:padding="6dp"
+                        android:background="@drawable/shape_circle"
+                        android:backgroundTint="@color/medium_ii_bg"
+                        app:tint="@color/medium_ii_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/price_title"
+                        style="@style/TextExtraSmall_Bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/market_price"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginTop="6dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/total_prices"
+                        style="@style/Heading4"
+                        android:fontFamily="@font/manrope_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="0"
+                        android:textColor="@color/textPrimary"
+                        android:layout_marginTop="2dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/price_title" />
+
+                    <TextView
+                        style="@style/TextBase_Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/denom_kg"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="4dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/total_prices"
+                        app:layout_constraintStart_toEndOf="@+id/total_prices" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                android:paddingTop="16dp"
+                android:orientation="vertical"
+                android:background="@drawable/shape_rounded"
+                android:backgroundTint="@color/backgroundPrimary">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextBase_SemiBold"
+                    android:text="@string/conditions"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/textPrimary"
+                    android:drawablePadding="4dp"
+										app:drawableEndCompat="@drawable/ic_help_filled"
+										app:drawableTint="@color/textTertiary" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="16dp"
+                    android:background="@color/fillSecondary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/water"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/Heading4"
+                            android:fontFamily="@font/manrope_bold"
+                            android:textColor="@color/textPrimary"
+														app:drawableStartCompat="@drawable/ic_water_half_bold"
+														app:drawableTint="@color/infoBase"
+														tools:text="-"
+														android:drawablePadding="8dp" />
+
+                        <TextView
+                            style="@style/TextExtraSmall_Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/water_level"
+                            android:textColor="@color/textSecondary"
+                            android:layout_marginTop="6dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="@color/fillSecondary"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/smell"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/Heading4"
+                            android:fontFamily="@font/manrope_bold"
+                            android:textColor="@color/textPrimary"
+														app:drawableStartCompat="@drawable/ic_wind_bold"
+														app:drawableTint="@color/positiveBase"
+														tools:text="-"
+														android:drawablePadding="8dp" />
+
+                        <TextView
+                            style="@style/TextExtraSmall_Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rice_stench"
+                            android:textColor="@color/textSecondary"
+                            android:layout_marginTop="6dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="@color/fillSecondary"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/chemical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/Heading4"
+                            android:fontFamily="@font/manrope_bold"
+                            android:textColor="@color/textPrimary"
+														app:drawableStartCompat="@drawable/ic_flask_bold"
+														app:drawableTint="@color/negativeBase"
+														tools:text="-"
+														android:drawablePadding="8dp" />
+
+                        <TextView
+                            style="@style/TextExtraSmall_Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/chemist_level"
+                            android:textColor="@color/textSecondary"
+                            android:layout_marginTop="6dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linear_layout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                android:paddingTop="16dp"
+                android:orientation="vertical"
+                android:background="@drawable/shape_rounded"
+                android:backgroundTint="@color/backgroundPrimary">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/TextBase_SemiBold"
+                    android:text="@string/handle_recommendation"
+                    android:paddingHorizontal="16dp"
+                    android:layout_marginBottom="4dp"
+                    android:textColor="@color/textPrimary"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/TextExtraSmall_Regular"
+                    android:text="@string/handle_recommendation_under"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/textSecondary"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="16dp"
+                    android:background="@color/fillSecondary" />
+
+                <LinearLayout
+                    android:id="@+id/recommendation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+												android:drawablePadding="10dp"
+												style="@style/TextBase_SemiBold"
+												app:drawableStartCompat="@drawable/ic_info_filled"
+												app:drawableTint="@color/positiveBase"
+												tools:text="Butir patah dan menir perlu dikurangi"
+                        android:textColor="@color/positiveDark"
+                        android:layout_marginBottom="4dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            app:cardCornerRadius="10dp"
+                            android:layout_marginStart="9dp"
+                            android:layout_marginEnd="19dp"
+                            android:backgroundTint="@color/positiveLight"
+                            app:cardElevation="0dp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/TextSmall_Regular"
+                            tools:text="Untuk kualitas mutu yang lebih baik, kurangi jumlah butir patah dan menir, pastikan kadar air maksimal 14% sebelum penggilingan, lakukan revitalisasi pada mesin penggiling gabah, dan juga gunakan mesin length grader untuk memisahkan butir patah dan menir."
+                            android:textColor="@color/textSecondary"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Navbar -->
+    <LinearLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingVertical="14dp"
+        android:paddingHorizontal="9dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:padding="7dp"
+            android:src="@drawable/ic_arrow_left"
+            android:background="@drawable/shape_circle"
+            android:backgroundTint="@color/bg_button_opacity"
+            app:tint="@color/white"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            style="@style/TextExtraLarge_SemiBold"
+            android:id="@+id/title_navbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/textPrimary"
+            android:layout_marginEnd="16dp"
+            tools:text="Detail Identifikasi"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <ImageButton
+                android:id="@+id/btn_share"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:padding="7dp"
+                android:src="@drawable/ic_share"
+                android:background="@drawable/shape_circle"
+                android:backgroundTint="@color/bg_button_opacity"
+                app:tint="@color/white"
+                android:layout_marginEnd="6dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_more"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:padding="7dp"
+                android:src="@drawable/ic_more"
+                android:background="@drawable/shape_circle"
+                android:backgroundTint="@color/bg_button_opacity"
+                app:tint="@color/white"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

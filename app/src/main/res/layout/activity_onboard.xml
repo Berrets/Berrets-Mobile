@@ -1,10 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/main"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:fillViewport="true"
+	android:background="@color/backgroundSecondary"
 	tools:context=".view.onBoard.OnboardActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="1">
+			
+			<View
+				android:id="@+id/onboard_bg"
+				android:layout_width="match_parent"
+				android:layout_height="420dp"
+				android:background="@color/primary400"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<ImageView
+				android:id="@+id/berrets_logo"
+				android:layout_width="wrap_content"
+				android:layout_height="64dp"
+				android:layout_marginTop="48dp"
+				android:src="@drawable/img_berrets_plain_white"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="268dp"
+				android:layout_marginTop="48dp"
+				android:src="@drawable/hero_onboard"
+				app:layout_constraintTop_toBottomOf="@+id/berrets_logo" />
+
+			<TextView
+				style="@style/Heading5"
+				android:id="@+id/onboard_heading"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Selamat datang di Berrets"
+				android:textColor="@color/textPrimary"
+				android:textAlignment="center"
+				android:paddingHorizontal="16dp"
+				android:layout_marginTop="24dp"
+				app:layout_constraintTop_toBottomOf="@+id/onboard_bg" />
+
+			<TextView
+				style="@style/TextBase_Regular"
+				android:id="@+id/onboard_subheading"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Identifikasi kualitas beras putih Anda dengan efektif dan efisien"
+				android:textColor="@color/textSecondary"
+				android:textAlignment="center"
+				android:paddingHorizontal="16dp"
+				android:layout_marginTop="6dp"
+				app:layout_constraintTop_toBottomOf="@+id/onboard_heading" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+		<LinearLayout
+			android:id="@+id/linear_layout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:orientation="vertical"
+			android:padding="16dp">
+
+			<android.widget.Button
+				android:id="@+id/btn_login"
+				style="@style/TextBase_SemiBold"
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:background="@drawable/btn_primary"
+				android:outlineProvider="none"
+				android:textAllCaps="false"
+				android:textColor="@color/white"
+				android:letterSpacing="0"
+				android:text="Masuk"
+				android:layout_marginBottom="4dp"/>
+
+			<android.widget.Button
+				android:id="@+id/btn_register"
+				style="@style/TextBase_SemiBold"
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:background="@drawable/btn_primary"
+				android:backgroundTint="@color/backgroundSecondary"
+				android:outlineProvider="none"
+				android:textAllCaps="false"
+				android:textColor="@color/primary400"
+				android:letterSpacing="0"
+				android:text="Daftar"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</ScrollView>

@@ -6,10 +6,14 @@
 
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission
+		android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+		android:maxSdkVersion="28" />
 
 	<application
 		android:allowBackup="true"
 		android:dataExtractionRules="@xml/data_extraction_rules"
+		android:forceDarkAllowed="false"
 		android:fullBackupContent="@xml/backup_rules"
 		android:icon="@mipmap/ic_launcher"
 		android:label="@string/app_name"
@@ -17,6 +21,27 @@
 		android:supportsRtl="true"
 		android:theme="@style/Theme.Berrets"
 		tools:targetApi="31">
+		<activity
+			android:name=".view.camera.CameraActivity"
+			android:exported="false" />
+		<activity
+			android:name=".view.splash.SplashActivity"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.register.AccountDataActivity"
+			android:exported="false" />
+		<activity
+			android:name=".view.register.VerifyActivity"
+			android:exported="false" />
+		<activity
+			android:name=".view.main.MainActivity"
+			android:exported="false" />
 		<activity
 			android:name=".view.register.RegisterActivity"
 			android:exported="false" />
@@ -27,14 +52,14 @@
 			android:name=".view.onBoard.OnboardActivity"
 			android:exported="false" />
 		<activity
-			android:name=".view.main.MainActivity"
-			android:exported="true">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-		</activity>
+			android:name=".view.qualityDetection.HistoryDetectionActivity"
+			android:exported="false" />
+		<activity
+			android:name=".view.qualityDetection.DetailDetectionActivity"
+			android:exported="false" />
+		<activity
+			android:name=".view.qualityDetection.QualityDetectionActivity"
+			android:exported="false" />
 	</application>
 
 </manifest>
