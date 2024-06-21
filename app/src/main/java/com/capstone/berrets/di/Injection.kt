@@ -6,8 +6,6 @@ import com.capstone.berrets.local.preferences.UserPreferences
 import com.capstone.berrets.local.preferences.dataStore
 import com.capstone.berrets.local.repository.PostRepository
 import com.capstone.berrets.local.repository.UserRepository
-import com.google.firebase.Firebase
-import com.google.firebase.auth.auth
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 

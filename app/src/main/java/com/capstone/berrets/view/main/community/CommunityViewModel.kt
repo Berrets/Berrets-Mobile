@@ -17,7 +17,6 @@ class CommunityViewModel(private val repository: PostRepository) : ViewModel() {
 	val isLoading: LiveData<Boolean> = _isLoading
 
 	fun getPosts() {
-		Log.d(TAG, "getPosts: called")
 		_isLoading.value = true
 		viewModelScope.launch {
 			val posts = repository.getPosts()
