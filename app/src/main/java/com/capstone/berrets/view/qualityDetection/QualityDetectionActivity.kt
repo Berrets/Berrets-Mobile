@@ -2,29 +2,34 @@ package com.capstone.berrets.view.qualityDetection
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.capstone.berrets.R
 import com.capstone.berrets.databinding.ActivityQualityDetectionBinding
+import com.capstone.berrets.factory.UserViewModelFactory
+import com.capstone.berrets.helper.bitmapToByteArray
 import com.capstone.berrets.helper.dp
 import com.capstone.berrets.view.camera.CameraActivity
 import com.capstone.berrets.view.camera.CameraActivity.Companion.CAMERAX_RESULT
 import com.capstone.berrets.view.qualityDetection.custom.roundedShape
-import com.capstone.berrets.view.register.VerifyActivity
+import com.capstone.berrets.view.qualityDetection.viewModel.QualityDetectionViewModel
 
 class QualityDetectionActivity : AppCompatActivity() {
 
 	private lateinit var binding: ActivityQualityDetectionBinding
+	private val viewModel by viewModels<QualityDetectionViewModel> {
+		UserViewModelFactory.getInstance(this)
+	}
 	private val handler = Handler()
 	private var scrollAmount = 2
 	private lateinit var scrollRunnable: Runnable
@@ -32,6 +37,7 @@ class QualityDetectionActivity : AppCompatActivity() {
 	private var scrollDirectionSecondary = SCROLL_LEFT
 
 	private var currentImageUri: Uri? = null
+	private var currentImageBitmap: Bitmap? = null
 	private val requestPermissionLauncher = registerForActivityResult(
 		ActivityResultContracts.RequestPermission()
 	) { isGranted: Boolean ->
@@ -45,8 +51,8 @@ class QualityDetectionActivity : AppCompatActivity() {
 		ActivityResultContracts.StartActivityForResult()
 	) {
 		if (it.resultCode == CAMERAX_RESULT) {
-			currentImageUri = it.data?.getStringExtra(CameraActivity.EXTRA_CAMERAX_IMAGE)?.toUri()
-			startDetection(currentImageUri)
+			currentImageBitmap = it.data?.extras?.get("data") as Bitmap
+			uploadDetectionData(currentImageBitmap)
 		}
 	}
 
@@ -68,6 +74,10 @@ class QualityDetectionActivity : AppCompatActivity() {
 
 		if (!allPermissionGranted()) {
 			requestPermissionLauncher.launch(REQUIRED_PERMISSION)
+		}
+
+		viewModel.isLoading.observe(this) {
+			showLoading(it)
 		}
 
 		setupActivity()
@@ -286,14 +296,24 @@ class QualityDetectionActivity : AppCompatActivity() {
 		launcherIntentCameraX.launch(intent)
 	}
 
-	private fun startDetection(imageUri: Uri?) {
-
+	private fun uploadDetectionData(image: Bitmap?) {
+		val fileName = "image_${System.currentTimeMillis()}.jpg"
+		val imageDetection = bitmapToByteArray(image!!)
+		viewModel.uploadDetection(imageDetection, fileName)
 	}
 
 	private fun allPermissionGranted() = ContextCompat.checkSelfPermission(
 		this,
 		REQUIRED_PERMISSION
 	) == PackageManager.PERMISSION_GRANTED
+
+	private fun showLoading(isLoading: Boolean) {
+		if (isLoading) {
+			binding.progressBar.visibility = android.view.View.VISIBLE
+		} else {
+			binding.progressBar.visibility = android.view.View.GONE
+		}
+	}
 
 	companion object {
 		private const val SCROLL_RIGHT = 1

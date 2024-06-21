@@ -1,8 +1,10 @@
 package com.capstone.berrets.helper
 
 import android.util.Log
+import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
+import java.util.Locale
 import java.util.TimeZone
 
 fun Date.timeOfDay(): TimeOfDay {
@@ -15,4 +17,10 @@ fun Date.timeOfDay(): TimeOfDay {
 		in 12..16 -> TimeOfDay.AFTERNOON
 		else -> TimeOfDay.NIGHT
 	}
+}
+
+fun getCurrentDateTime(): String {
+	val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+	val currentDate = Date()
+	return dateFormat.format(currentDate)
 }

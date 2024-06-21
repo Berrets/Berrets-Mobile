@@ -6,11 +6,13 @@ import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.net.Uri
 import android.os.Environment
+import android.util.Base64
 import androidx.core.content.FileProvider
 import androidx.exifinterface.media.ExifInterface
 import com.capstone.berrets.BuildConfig
 import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.InputStream
 import java.text.SimpleDateFormat

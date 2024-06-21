@@ -8,6 +8,8 @@ import com.capstone.berrets.local.repository.UserRepository
 import com.capstone.berrets.view.login.LoginViewModel
 import com.capstone.berrets.view.main.MainViewModel
 import com.capstone.berrets.view.main.home.HomeViewModel
+import com.capstone.berrets.view.qualityDetection.viewModel.HistoryDetectionViewModel
+import com.capstone.berrets.view.qualityDetection.viewModel.QualityDetectionViewModel
 import com.capstone.berrets.view.register.viewModel.AccountDataViewModel
 import com.capstone.berrets.view.register.viewModel.RegisterViewModel
 import com.capstone.berrets.view.splash.SplashViewModel
@@ -33,6 +35,12 @@ class UserViewModelFactory(private val userRepository: UserRepository): ViewMode
 			}
 			modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
 				HomeViewModel(userRepository) as T
+			}
+			modelClass.isAssignableFrom(QualityDetectionViewModel::class.java) -> {
+				QualityDetectionViewModel(userRepository) as T
+			}
+			modelClass.isAssignableFrom(HistoryDetectionViewModel::class.java) -> {
+				HistoryDetectionViewModel(userRepository) as T
 			}
 			else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
 		}

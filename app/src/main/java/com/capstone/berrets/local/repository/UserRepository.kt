@@ -1,11 +1,9 @@
 package com.capstone.berrets.local.repository
 
 import android.util.Log
-import androidx.credentials.CustomCredential
-import androidx.credentials.GetCredentialResponse
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.capstone.berrets.api.ApiService
+import com.capstone.berrets.api.response.DetectionDataRequest
+import com.capstone.berrets.api.response.DetectionDataResponse
 import com.capstone.berrets.api.response.ExistEmailRequest
 import com.capstone.berrets.api.response.ExistEmailResponse
 import com.capstone.berrets.api.response.LoginRequest
@@ -15,12 +13,6 @@ import com.capstone.berrets.api.response.RegisterResponse
 import com.capstone.berrets.local.preferences.UserPreferences
 import com.capstone.berrets.model.Register
 import com.capstone.berrets.model.User
-import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
-import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
-import com.google.firebase.auth.AuthCredential
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
@@ -120,6 +112,26 @@ class UserRepository private constructor(
 	}
 
 	// LOGOUT
+
+	// UPLOAD DETECTION
+	suspend fun uploadDetection(image: ByteArray, fileName: String): DetectionDataResponse {
+		try {
+			val response = apiService.createDetectionData(
+				DetectionDataRequest(
+					fileName = fileName,
+					photo = image,
+				)
+			)
+
+			return response
+
+		} catch (e: HttpException) {
+			val errorBody = e.response()?.errorBody()?.string()
+			val response = Gson().fromJson(errorBody, DetectionDataResponse::class.java)
+
+			return response
+		}
+	}
 	companion object {
 		private const val TAG = "UserRepository"
 

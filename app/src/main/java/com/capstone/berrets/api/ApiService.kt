@@ -1,5 +1,7 @@
 package com.capstone.berrets.api
 
+import com.capstone.berrets.api.response.DetectionDataRequest
+import com.capstone.berrets.api.response.DetectionDataResponse
 import com.capstone.berrets.api.response.ExistEmailRequest
 import com.capstone.berrets.api.response.ExistEmailResponse
 import com.capstone.berrets.api.response.LoginRequest
@@ -26,4 +28,9 @@ interface ApiService {
 	suspend fun getEmail(
 		@Body email: ExistEmailRequest
 	): ExistEmailResponse
+
+	@POST("create-data")
+	suspend fun createDetectionData(
+		@Body detectionData: DetectionDataRequest
+	): DetectionDataResponse
 }

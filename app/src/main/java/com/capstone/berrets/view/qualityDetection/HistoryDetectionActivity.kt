@@ -1,17 +1,18 @@
 package com.capstone.berrets.view.qualityDetection
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.capstone.berrets.R
 import com.capstone.berrets.databinding.ActivityHistoryDetectionBinding
-import com.capstone.berrets.databinding.ActivityRegisterBinding
+import com.capstone.berrets.factory.UserViewModelFactory
+import com.capstone.berrets.view.qualityDetection.viewModel.HistoryDetectionViewModel
 
 class HistoryDetectionActivity : AppCompatActivity() {
 
 	private lateinit var binding: ActivityHistoryDetectionBinding
+	private val viewModel by viewModels<HistoryDetectionViewModel> {
+		UserViewModelFactory.getInstance(this)
+	}
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
